@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Грузы</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+<header data-controller="templateHeader"></header>
+
+  <main class="cargo-main">
+
+    <section class="main__baner main__baner-cargo">
+      <div class="container">
+        <h2 class="main__baner-title">
+          Поиск груза
+        </h2>
+      </div>
+    </section>
+
+    <section class="container__cargo cargo-main__bg transport-bg">
+      <div class="container">
+        <div class="container__cargo-box container__cargo-box_column" data-controller="addingCargo filter">
+          <div class="cargo-box__col cargo-box__col-form">
+            <form action="" class="filter__form" id="cargoFilterForm">
+              <h4 class="form__title">
+                Фильтр
+              </h4>
+
+              <!-- Дата -->
+              <fieldset class="form__fieldset">
+                <legend class="form__legend">Дата</legend>
+                <div class="form__block">
+                  <div class="form__text">c
+                    <input type="text" name="shipmentdateFrom" id="shipmentdate-from" class="form-control form-control--filter datepicker-box" autocomplete="off">
+                  </div>
+                  <div class="form__text">по
+                    <input type="text" name="shipmentdateUntil" id="shipmentdate-until" class="form-control form-control--filter datepicker-box" autocomplete="off">
+                  </div>
+                </div>
+              </fieldset>
+              <!-- /Дата -->
+
+              <!-- пункт погрузки  мультиселект с поиском и добавлением  -->
+              <fieldset class="form__fieldset form__fieldset-city">
+                <legend class="form__legend">Пункт погрузки</legend>
+                <div class="form__block ">
+                  <div class="form__city addpoint-loadingbox"></div>
+                  <div class="form-btn__dox form-btn__dox_first">
+                    <input type="button" value="+" class="form__btn-add"  data-action="click->addingCargo#addPointLoading" title="Добавить пункт погрузки" aria-label="Добавить пункт погрузки">
+                  </div>
+                </div>
+              </fieldset>
+              <!-- /пункт погрузки  мультиселект с поиском и добавлением  -->
+
+              <!-- пункт выгрузки  мультиселект с поиском и добавлением  -->
+              <fieldset class="form__fieldset form__fieldset-city">
+                <legend class="form__legend">Пункт выгрузки</legend>
+                <div class="form__block ">
+                  <div class="form__city addpoint-unloadingbox"></div>
+                  <div class="form-btn__dox form-btn__dox_first">
+                    <input type="button" value="+" class="form__btn-add"  data-action="click->addingCargo#addPointUnloading" title="Добавить пункт выгрузки" aria-label="Добавить пункт выгрузки">
+                  </div>
+                </div>
+              </fieldset>
+              <!-- /пункт выгрузки  мультиселект с поиском и добавлением  -->
+
+
+              <!-- Вес: тонна  -->
+              <fieldset class="form__fieldset">
+                <legend class="form__legend">Вес: тонна</legend>
+                <div class="form__block">
+                  <div class="form__text">c
+                    <input type="number" name="weightFrom" id="weight-from" class="form-control form-control--filter" placeholder="1">
+                  </div>
+                  <div class="form__text">по
+                    <input type="number" name="weightUntil" id="weight-until" class="form-control form-control--filter" placeholder="100">
+                  </div>
+                </div>
+              </fieldset>
+              <!-- /Вес: тонна  -->
+
+              <!-- объем: м3 -->
+              <fieldset class="form__fieldset">
+                <legend class="form__legend">Объем: м<sup>3</sup></legend>
+                <div class="form__block">
+                  <div class="form__text">от
+                    <input type="number" name="volumeFrom"  class="form-control form-control--filter" id="volume-from" placeholder="10">
+                  </div>
+                  <div class="form__text">до
+                    <input type="number" name="volumeUntil" class="form-control form-control--filter"  id="volume-until" placeholder="100">
+                  </div>
+                </div>
+              </fieldset>
+              <!-- /объем: м3 -->
+
+              <!-- вид погрузки -->
+              <fieldset class="form__fieldset">
+                <legend class="form__legend">Вид погрузки:</legend>
+                <div class="form-adding__row form-adding__row-check form__filter-check">
+                   <div class="adding__checkbox">
+                    <input type="checkbox" name="typeLoad[]" value="2" id="typeload-rear">
+                    <label class="checkbox__lable" for="typeload-rear">Задняя</label>
+                  </div>
+                  <div class="adding__checkbox">
+                    <input type="checkbox" name="typeLoad[]" value="3" id="typeload-top">
+                    <label class="checkbox__lable" for="typeload-top">Верхняя</label>
+                  </div>
+                  <div class="adding__checkbox">
+                    <input type="checkbox" name="typeLoad[]" value="4"  id="typeload-back">
+                    <label class="checkbox__lable" for="typeload-back">Боковая</label>
+                    <div class="invalid-feedback">
+                      Пожалуйста, выберите один или несколько вариантов
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <!-- /вид погрузки -->
+
+              <!-- тип груза -->
+              <fieldset class="form__fieldset">
+                <legend class="form__legend">Тип груза</legend>
+                <div class="form__city">
+                  <select name="cargoType" id="cargoType" class="form-control">
+                    <option value="-1">Любой тип груза</option>
+                  </select>
+                </div>
+              </fieldset>
+              <!-- /тип груза -->
+
+              <button type="button" value="Применить" class="form__btn" data-action="click->filter#filterCargo" id="buttonFilter">Применить</button>
+
+
+              <button type="button" value="Очистить фильтр" class="form__btn--clear" data-action="click->filter#filterClear">Очистить фильтр</button>
+
+            </form>
+          </div>
+          <div class="cargo-box__col cargo-box__col-data">
+            <div class="sorting">
+              <div class="sorting__row">
+                <div class="sorting__row-adaptive">
+                  <div class="sorting__total">Всего объявлений: <span id="cargo-total"></span>
+                    | <span id="cargo-find-text">Показано:</span> <span id="cargo-find"></span>
+                 | Страница <span id="cargo-page">1</span>
+                  </div>
+                  <div class="sorting__favorit">
+                   <!-- <span class="sorting__favorit-lable">2</span>
+                    Избранное-->
+                  </div>
+                </div>
+                <div class="sorting__row-adaptive">
+               <!--   <div class="sorting__sort"></div>
+                  <select name="" class="sorting__select" data-action="click->filter">
+                    <option value="">За все время</option>
+                    <option value="">За последний час</option>
+                    <option value="">За 4 часа</option>
+                    <option value="">За сегодня</option>
+                    <option value="">За 3 дня</option>
+                    <option value="">За неделю</option>
+                    <option value="">За месяц</option>
+                  </select>-->
+                </div>
+              </div>
+            </div>
+
+            <!-- ТОп грузов. закомментировано 10.2021 -->
+            <!--
+                       <div class="sentence cargo-main__col">
+                         <div class="sentence__title">
+                           Предложение грузов
+                         </div>
+
+                         <div data-controller="cargoListTop" data-cargoListTop-limit-values="2">
+                          список записей топ грузы
+              </div>
+
+            </div>
+            -->
+            <!-- END ТОп грузов. закомментировано 10.2021 -->
+
+
+            <div class="transport__col transport__col_margin">
+
+
+
+              <div data-controller="cargo-list" data-cargo-list-limit-value="5" id="cargoList">
+                <!-- список записей грузы в кз группами по 5 штук  -->
+              </div>
+
+              <div class="download-more">
+                <button class="btn__download-more" data-action="click->filter#loadMore">Загрузить еще</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+     <!-- <div class="country-city">
+        <div class="cargo-country">
+          <h2 class="container__title cargo-country__container__title">Грузы по Казахстану</h2>
+
+          <div class="cargo-country__links" data-controller="cargoListCity"></div>
+        </div>
+      </div>-->
+    </section>
+  </main>
+
+  <footer data-controller="templateFooter"></footer>
+
+</body>
+
+</html>

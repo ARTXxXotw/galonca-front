@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Запчасти</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+<header data-controller="templateHeader"></header>
+
+  <main>
+
+    <section class="main__baner main__baner-spare">
+      <div class="container">
+        <h2 class="main__baner-title">
+          запчасти
+        </h2>
+      </div>
+    </section>
+
+<!--    <section class="spare__menu">
+      <div class="container">
+        <div class="spare__menu_row">
+          <h4 class="spare__menu-title">Автотехника</h4>
+            <ul class="spare__menu-nav">
+              <li class="spare__menu-list">
+                <div class="spare-menu__box">
+                  <div class="spare-menu__img spare-menu__img-mule"></div>
+                  <div class="spar-menu-box__title">Тягач</div>
+                </div>
+              </li>
+              <li class="spare__menu-list">
+                <div class="spare-menu__box">
+                  <div class="spare-menu__img spare-menu__img-truck"></div>
+                  <div class="spar-menu-box__title">Грузовик</div>
+                </div>
+              </li>
+              <li class="spare__menu-list">
+                <div class="spare-menu__box">
+                  <div class="spare-menu__img spare-menu__img-trailer"></div>
+                  <div class="spar-menu-box__title">Прицеп/
+                    полуприцеп</div>
+                </div>
+              </li>
+              <li class="spare__menu-list">
+                <div class="spare-menu__box">
+                  <div class="spare-menu__img spare-menu__img-bus"></div>
+                  <div class="spar-menu-box__title">Автобус</div>
+                </div>
+              </li>
+              <li class="spare__menu-list">
+                <div class="spare-menu__box">
+                  <div class="spare-menu__img spare-menu__img-mini-bus"></div>
+                  <div class="spar-menu-box__title">Микроавтобус</div>
+                </div>
+              </li>
+              <li class="spare__menu-list">
+                <div class="spare-menu__box">
+                  <div class="spare-menu__img spare-menu__img-tipper"></div>
+                  <div class="spar-menu-box__title">Самосвал</div>
+                </div>
+              </li>
+              <li class="spare__menu-list">
+                <div class="spare-menu__box">
+                  <div class="spare-menu__img spare-menu__img-traktor"></div>
+                  <div class="spar-menu-box__title">Спецтехника</div>
+                </div>
+              </li>
+            </ul>
+        </div>
+        <div class="spare__menu_row">
+          <h4 class="spare__menu-title">Поиск</h4>
+            <ul class="spare__menu-nav">
+              <li class="spare__menu-list">
+                <div class="spare-menu__box">
+                  <div class="spare-menu__img spare-menu__img-tires"></div>
+                  <div class="spar-menu-box__title">Шины/диски</div>
+                </div>
+              </li>
+              <li class="spare__menu-list">
+                <div class="spare-menu__box">
+                  <div class="spare-menu__img spare-menu__img-jack"></div>
+                  <div class="spar-menu-box__title">Гидравлическая система</div>
+                </div>
+              </li>
+              <li class="spare__menu-list">
+                <div class="spare-menu__box">
+                  <div class="spare-menu__img spare-menu__img-electro"></div>
+                  <div class="spar-menu-box__title">АКБ/электрика</div>
+                </div>
+              </li>
+              <li class="spare__menu-list">
+                <div class="spare-menu__box">
+                  <div class="spare-menu__img spare-menu__img-air"></div>
+                  <div class="spar-menu-box__title">Воздушная
+                    система</div>
+                </div>
+              </li>
+              <li class="spare__menu-list">
+                <div class="spare-menu__box">
+                  <div class="spare-menu__img spare-menu__img-oil"></div>
+                  <div class="spar-menu-box__title">Масла/
+                    автохимия</div>
+                </div>
+              </li>
+              <li class="spare__menu-list">
+                <div class="spare-menu__box">
+                  <div class="spare-menu__img spare-menu__img-support"></div>
+                  <div class="spar-menu-box__title">Прочие
+                    запчасти</div>
+                </div>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </section>-->
+
+    <section class="services spare__bg">
+      <div class="container">
+        <div class="service__container" data-controller="addingSpare filter">
+          <div class="service-content__col service__col-form"  >
+            <form action="" class="filter__form filter__form-service" id="spareFilterForm">
+              <h4 class="form__title form__title-service">
+                Фильтр
+              </h4>
+
+              <!-- адрес город автокоплит с поиском   -->
+              <fieldset class="form__fieldset form__fieldset-city">
+                <legend class="form__legend">Город</legend>
+                <div class="form__city addressCity-box"></div>
+              </fieldset>
+              <!-- /адрес город автокоплит с поиском   -->
+
+              <!-- Тип транспорта-->
+              <fieldset class="form__fieldset form__fieldset-city">
+                <legend class="form__legend">Тип транспорта</legend>
+                <div class="form__city">
+                  <select name="transport[]" id="transport-filter" class="form-control" multiple="multiple">
+                  </select>
+                </div>
+
+              </fieldset>
+              <!-- /Тип транспорта -->
+
+              <!-- Категория мультиселект -->
+              <fieldset class="form__fieldset form__fieldset-city">
+                <legend class="form__legend">Категория</legend>
+                <div class="form__city">
+                  <select name="category[]" id="service" class="form-control" multiple="multiple">
+                  </select>
+                </div>
+              </fieldset>
+              <!-- /Категория теги -->
+
+              <!-- Только с фото -->
+             <!-- <fieldset class="form__fieldset form__block-size">
+                <div class="form-adding__row form-adding__row-check form__filter-check">
+                  <div class="adding__checkbox form__only">
+                    <input type="checkbox" name="onlyWithFoto" value="Только с фото" id="only-with-foto" checked>
+                    <label class="checkbox__lable" for="only-with-foto">Только с фото</label>
+                  </div>
+                </div>
+              </fieldset>-->
+              <!-- |Только с фото -->
+
+              <button type="button" value="Применить" class="form__btn" data-action="click->filter#spareLoadMore" id="buttonFilter">Применить</button>
+
+
+              <button type="button" value="Очистить фильтр" class="form__btn--clear" data-action="click->filter#filterClear">Очистить фильтр</button>
+
+            </form>
+          </div>
+          <div class="service-content__col cargo-box__col-data">
+            <div class="sorting">
+              <div class="sorting__row">
+                <div class="sorting__row-adaptive">
+                  <div class="sorting__total">
+                    Всего найдено объявлений: <span id="spare-total"></span>
+                    | <span id="spare-find-text">Показано:</span> <span id="spare-find"></span>
+                    | Страница <span id="spare-page">1</span>
+                  </div>
+                  <div class="sorting__favorit">
+                    <!-- <span class="sorting__favorit-lable">2</span>
+                     Избранное-->
+                  </div>
+                </div>
+                <div class="sorting__row-adaptive">
+                  <div class="sorting__sort"></div>
+                 <!-- <select name="" class="sorting__select" data-action="click->filter">
+                    <option value="">За все время</option>
+                    <option value="">За последний час</option>
+                    <option value="">За 4 часа</option>
+                    <option value="">За сегодня</option>
+                    <option value="">За 3 дня</option>
+                    <option value="">За неделю</option>
+                    <option value="">За месяц</option>
+                  </select>-->
+                </div>
+              </div>
+            </div>
+
+            <div class="services__content spare-content">
+                <div data-controller="spare-list" data-spare-list-limit-value="7" id="spareList"> <!-- список запчасти -->
+                </div>
+                <div class="download-more">
+                  <button class="btn__download-more" data-action="click->filter#spareLoadMore">Загрузить еще</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!--    <div class="country-city">
+      <div class="cargo-country">
+        <h2 class="container__title cargo-country__container__title">Запчасти по Казахстану</h2>
+        <div class="cargo-country__links" data-controller="spareListCity"></div>
+      </div>
+    </div>-->
+
+  </main>
+
+  <footer data-controller="templateFooter"></footer>
+</body>
+</html>

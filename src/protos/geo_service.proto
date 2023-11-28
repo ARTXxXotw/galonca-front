@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package api;
+option go_package = "/api";
+
+message Country {
+  uint64 id = 1;
+  string name = 2;
+  repeated Region regions = 3;
+}
+
+message Region {
+  uint64 id = 1;
+  string name = 2;
+  repeated City cities = 3;
+}
+
+message City {
+  uint64 id = 1;
+  string name = 2;
+  Region region = 3;
+  Country country = 4;
+}
+
+message GetCityRequest {
+  uint64 id = 1;
+}
+
+message GetRegionRequest {
+  uint64 id = 1;
+}
+
+message GetCountryRequest {
+  uint64 id = 1;
+}
+
+message CityListRequest {
+  string name = 1;
+}
+
+message RegionListRequest {
+  string name = 1;
+}
+
+message CountryListRequest {
+  string name = 1;
+}
+
+message CityListResponse {
+  repeated City cities = 1;
+}
+
+message RegionListResponse {
+  repeated Region regions = 1;
+}
+
+message CountryListResponse {
+  repeated Country countries = 1;
+}
+
+service GeoService {
+  rpc ListCountry(CountryListRequest) returns (CountryListResponse) {}
+  rpc ListRegion(RegionListRequest) returns (RegionListResponse) {}
+  rpc ListCity(CityListRequest) returns (CityListResponse) {}
+  rpc GetCity(GetCityRequest) returns (City) {}
+  rpc GetCountry(GetCountryRequest) returns (Country) {}
+  rpc GetRegion(GetRegionRequest) returns (Region) {}
+}

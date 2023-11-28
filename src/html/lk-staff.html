@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мои сотрудники</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body data-controller="templateAuthCheck">
+
+<header data-controller="templateHeader"></header>
+
+  <main>
+    <section class="main__baner-lk">
+      <strong class="main__baner-title">
+        Личный кабинет
+      </strong>
+    </section>
+    <section class="lk-nav-top__section">
+      <div class="container lk-nav-top__container">
+        <ul class="lk-nav-top">
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="index.html">Главная</a>
+          </li>
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="lk-data.html">Личный кабинет</a>
+          </li>
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="lk-staff.html">Мои сотрудники</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="lk__section">
+      <div class="container lk__container">
+        <div class="lk__container-col">
+          <div class="lk-nav__box" data-controller="templateLkNav">
+            <!-- навигация внутри ЛК -->
+          </div>
+        </div>
+        <div class="lk__container-col staff__col" data-controller="lkStaff">
+          <div class="staff-container__header">
+            <h4 class="lk__title">Мои сотрудники</h4>
+            <a href="lk-staff-add.html" class="favorites-box__contact staff__btn">Добавить сотрудника</a>
+          </div>
+          <div class="lk__table">
+            <table class="staff__table">
+             <thead>
+              <tr>
+                <th>#</th>
+                <th>Имя</th>
+                <th>Телефон</th>
+                <th>Email</th>
+                <th>Изменить</th>
+                <th>Удалить</th>
+              </tr>
+              </thead>
+              <tbody id="staff-list"></tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer data-controller="templateFooter"></footer>
+
+</body>
+
+</html>

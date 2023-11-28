@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мои данные</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body data-controller="templateAuthCheck">
+
+<header data-controller="templateHeader"></header>
+
+  <main  id="profileBox">
+    <section class="main__baner-lk">
+      <strong class="main__baner-title">
+        Личный кабинет
+      </strong>
+    </section>
+    <section class="lk-nav-top__section">
+      <div class="container lk-nav-top__container">
+        <ul class="lk-nav-top">
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="index.html">Главная</a>
+          </li>
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="lk-data.html">Личный кабинет</a>
+          </li>
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="lk-data.html">Мои данные</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="lk__section">
+      <div class="container lk__container">
+        <div class="lk__container-col">
+          <div class="lk-nav__box" data-controller="templateLkNav">
+            <!-- навигация внутри ЛК -->
+          </div>
+        </div>
+
+        <div class="lk__container-col lk-col__data"  data-controller="lkCompany">
+
+
+          <!-- компания -->
+          <form class="form-adding lk-profile__form needs-validation" id="profileCompanyForm" novalidate>
+            <p>Вы можете добавить только одну компанию</p>
+            <p>Все поля обязательны для заполнения</p>
+
+            <fieldset class="row col-sm-12 col-md-12 mt-4">
+              <legend>Юридическая информация</legend>
+              <div class="col-sm-12 col-md-12 mb-4">
+                <label class="form-label" for="profileCompanyName">* Наименование компании</label>
+                <input type="text" name="title" id="profileCompanyName" class="form-control" required="required" value="" placeholder="Полное название компании">
+                <div class="invalid-feedback">
+                  Пожалуйста, заполните поле
+                </div>
+              </div>
+
+
+              <div class="col-sm-12 col-md-12 mb-4">
+                <label class="form-label" for="profileCompanyActivity">* Тип деятельности</label>
+                <input type="text" name="activityType" id="profileCompanyActivity" class="form-control" required="required" value="" placeholder="Например, логистика">
+                <div class="invalid-feedback">
+                  Пожалуйста, заполните поле
+                </div>
+              </div>
+
+
+              <div class="col-sm-12 col-md-6 mb-4">
+                <label class="form-label" for="profileCompanyPhone">* Контактный телефон</label>
+                <div class="add-tel-box" id="default-tel-box"></div>
+              <!--  <input type="tel" name="phone" id="profileCompanyPhone" class="form-control" required="">
+                <div class="invalid-feedback">
+                  Пожалуйста, заполните поле
+                </div>-->
+              </div>
+
+              <div class="col-sm-12 col-md-6 mb-4">
+                <label class="form-label" for="profileCompanyEmail">* Контактный Email</label>
+                <input type="email" name="email" id="profileCompanyEmail" class="form-control" required="">
+                <div class="invalid-feedback">
+                  Пожалуйста, заполните поле
+                </div>
+              </div>
+
+
+              <div class="col-sm-12 col-md-6 mb-4">
+
+                <label class="form-label" for="profileCompanyBin">* Номер государственной регистрации Вашей компании</label>
+                <div class="add-tel-box" id="default-bin-box"></div>
+                <!--<input type="num" name="bin" id="profileCompanyBin" class="form-control" required="">
+                <div class="invalid-feedback">
+                  Пожалуйста, заполните поле
+                </div>-->
+              </div>
+
+            </fieldset>
+
+            <!-- фотографии -->
+            <fieldset class="row col-sm-12 col-md-12 mt-4">
+              <strong>* Свидетельство регистрации компании</strong>
+              <p class="col-sm-12 col-md-12"><span id="counterPhoto">0</span> из 10 фото </p>
+              <!--<p class="col-sm-12 col-md-12">Комментарий для документа</p>-->
+              <div class="adding-group__photo-theme" data-controller="imgManager">
+                <div class="adding-group__photo-theme_row" id="add-photo-list">
+
+                  <label class="adding-image-lable" for="files" id="addingImageLable">
+                    <output id="list"></output>
+                    <input type="button" name="imagesList" id="files" multiple accept="image/jpeg, image/*" data-action="click->lkCompany#addPhoto">
+                    <div class="load-tab">Добавить фотографию</div>
+                  </label>
+                  <div data-imgManager-target="hw"></div>
+                </div>
+              </div>
+            </fieldset>
+            <!-- фотографии -->
+
+
+
+
+
+            <div class="col-sm-12 col-md-12 mb-5">
+              <button type="button" class="adding__dtn lk-profile__btn" data-action="click->lkCompany#companySave">Сохранить</button>
+            </div>
+          </form>
+          <!-- END компания -->
+
+
+
+
+
+          <form class="form-adding lk-profile__form" id="profileDelete">
+            <p>После удаления компании: </p>
+            <ul class="marked">
+              <li>Восстановить компанию невозможно</li>
+              <li>Все привязанные к компании объявления удаляются</li>
+              <li>Все привязанные к компании сотрудники удаляются</li>
+              <li>Объявления, созданные сотрудниками удаленной компании удаляются</li>
+            </ul>
+            <div class="lk-btn__row">
+
+
+              <!-- Button trigger modal -->
+              <button type="button" class="lk__btn lk__btn-del" data-bs-toggle="modal" data-bs-target="#popup-delete">
+                Удалить компанию
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="popup-delete" tabindex="-1" aria-labelledby="popup-delete" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Вы уверены, что ходите удалить компанию?</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>После удаления компании: </p>
+                      <ul class="marked">
+                        <li>Восстановить компанию невозможно</li>
+                        <li>Все привязанные к компании объявления удаляются</li>
+                        <li>Все привязанные к компании сотрудники удаляются</li>
+                        <li>Объявления, созданные сотрудниками удаленной компании удаляются</li>
+                      </ul>
+
+                      <div class="container lk__container lk__container-center">
+
+                        <button type="button" class="lk__btn lk__btn--no" data-bs-dismiss="modal">НЕ ХОЧУ УДАЛЯТЬ КОМПАНИЮ</button>
+
+                        <div class="col-sm-6">
+                          <input type="hidden" name="id" id="profileCompanyId" value="">
+                          <input type="button" value="Удалить компанию" class="lk__btn lk__btn-del" data-bs-dismiss="modal" data-action="click->lkCompany#companyDelete">
+                        </div>
+                      </div>
+                    </div>
+                   <!-- <div class="modal-footer">
+
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>-->
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+
+
+          </form>
+
+
+      <!--    <form action="" class="lk-data__form">
+
+
+
+            <div class="adding-roadside__row lk-row__name">
+              <fieldset class="adding__fieldset lk__fieldset">
+                <legend class="adding__legend">Наименование компании</legend>
+                <div class="adding__input">
+                  <input type="text" name="" id="" value="ТОО ЛОГИСТИК" class="adding__input-text">
+                </div>
+              </fieldset>
+              <fieldset class="adding__fieldset lk__fieldset">
+                <legend class="adding__legend">Вид деятельности</legend>
+                <div class="adding__input">
+                  <input type="text" name="" id="" value="Транспортная компания" class="adding__input-text">
+                </div>
+              </fieldset>
+            </div>
+            <div class="adding-roadside__row_max lk-row__max">
+              <fieldset class="adding__fieldset lk__fieldset">
+                <legend class="adding__legend">E-mail</legend>
+                <div class="adding__input">
+                  <input type="mail" name="" id="" value="Iurii@test.kz" class="adding__input-text">
+                </div>
+              </fieldset>
+              <fieldset class="adding__fieldset lk__fieldset">
+                <legend class="adding__legend">Телефон</legend>
+                <div class="adding__input">
+                  <input type="tel" name="" id="" value="+7 707 777 77 77" class="adding__input-text">
+                </div>
+              </fieldset>
+              <fieldset class="adding__fieldset lk__fieldset">
+                <legend class="adding__legend">ИИН или БИН*</legend>
+                <div class="adding__input">
+                  <input type="text" name="" id="" value="Введите ИИН или БИН*" class="adding__input-text">
+                </div>
+              </fieldset>
+            </div>
+            <h4 class="adding__title lk-company__title">Свидетельство регистрации компании</h4>
+            <div class="adding-group__photo-theme_row">
+              <div class="demo-img">
+                <span class="img-wrap">
+                  <img src="img/свидетельство.jpg" alt="">
+                </span>
+                <div class="file-name__row">
+                  <div class="file-name file-name__demo">photo.jpg</div>
+                  <span class="delete-link" title="Удалить">Удалить</span>
+                </div>
+              </div>
+              <label class="adding-image-lable">
+                <input type="file" id="addImages">
+                <div class="load-tab">Загрузить другой документ</div>
+              </label>
+            </div>
+            <p class="form-adding__text">
+              <span class="form-adding__text_red">* </span>
+              Ваши данные в безопасности и не будут переданы третьим лицам
+            </p>
+            <h4 class="adding__title lk-company__title">Дополнительные данные</h4>
+            <div class="adding-roadside__row">
+              <fieldset class="adding__fieldset lk__fieldset">
+                <legend class="adding__legend">WhatsApp</legend>
+                <div class="adding__input">
+                  <input type="tel" name="" id="" value="+7 707 777 77 77" class="adding__input-text">
+                </div>
+              </fieldset>
+              <fieldset class="adding__fieldset lk__fieldset">
+                <legend class="adding__legend">Viber</legend>
+                <div class="adding__input">
+                  <input type="tel" name="" id="" value="+7 707 777 77 77" class="adding__input-text">
+                </div>
+              </fieldset>
+            </div>
+            <div class="adding-roadside__row lk-row__max">
+              <fieldset class="adding__fieldset lk__fieldset">
+                <legend class="adding__legend">Skype</legend>
+                <div class="adding__input">
+                  <input type="tel" name="" id="" value="+7 707 777 77 77" class="adding__input-text">
+                </div>
+              </fieldset>
+              <fieldset class="adding__fieldset lk__fieldset">
+                <legend class="adding__legend">Zoom</legend>
+                <div class="adding__input">
+                  <input type="tel" name="" id="" value="+7 707 777 77 77" class="adding__input-text">
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="adding-group__photo-theme_row">
+              <div class="demo-img">
+                <span class="img-wrap">
+                  <img src="img/photo-company.jpg" alt="">
+                </span>
+              </div>
+              <label class="adding-image-lable">
+                <input type="file" id="">
+                <div class="load-tab">Загрузить фото</div>
+              </label>
+            </div>
+            <div class="lk__comment">
+              <ul>
+                <li class="lk-cooment__item lk-cooment__item_all">Отзывы о моей компании: <span class="lk-comment__sum">7</span></li>
+                <li class="lk-cooment__item lk-cooment__item_like">Положительные: <span class="lk-comment__sum">5</span></li>
+                <li class="lk-cooment__item lk-cooment__item_dis">Отрицательные: <span class="lk-comment__sum">2</span></li>
+              </ul>
+            </div>
+            <div class="lk-btn__row">
+              <input type="button" value="Удалить профиль" class="lk__btn lk__btn-del">
+              <input type="button" value="Сохранить" class="lk__btn addition__btn-save">
+            </div>
+          </form>-->
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer data-controller="templateFooter"></footer>
+
+</body>
+
+</html>

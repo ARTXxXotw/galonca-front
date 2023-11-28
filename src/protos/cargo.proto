@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+option go_package = "/api";
+package api;
+
+message Cargo {
+  uint64 id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  repeated uint64 loadingPoints = 4;
+  repeated uint64 unloadingPoints = 5;
+  google.protobuf.Timestamp from = 6;
+  google.protobuf.Timestamp till = 7;
+  uint32 weight = 8;
+  uint32 volume = 9;
+  uint32 cost = 10;
+  repeated string transportType = 11;
+  repeated string loadingType = 12;
+  repeated string addition = 13;
+  repeated string additionalPhones = 14;
+  repeated string additionalMails = 15;
+  string currency = 16;
+  uint64 cargoType = 17;
+}
+
+
+message CargoRequest {
+  uint64 id = 1;
+}
+
+message CargoResponse {
+  uint64 id = 1;
+  bool success = 2;
+}
+
+message Geo {
+  uint64 geo_id = 1;
+  enum geo_type {
+    city = 0;
+    region = 1;
+    country = 2;
+  }
+  geo_type type = 2;
+}
+
+message FindCargoRequest {
+  repeated Geo geo_from = 1;
+  repeated Geo geo_to = 2;
+  uint32 weight_from = 3;
+  uint32 weight_to = 4;
+  uint32 volume_from = 5;
+  uint32 volume_to = 6;
+  google.protobuf.Timestamp from = 7;
+  google.protobuf.Timestamp till = 8;
+  uint32 limit = 9;
+  uint32 offset = 10;
+  repeated uint32 typeLoading = 11;
+  google.protobuf.Timestamp time_filter = 12;
+  uint64 cargoType =13;
+}
+
+message FindCargoResult {
+  uint64 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  message ShortGeo {
+    uint64 id = 1;
+    string name = 2;
+    uint32 type = 3;
+  }
+  repeated ShortGeo loadingPoints = 4;
+  repeated ShortGeo unloadingPoints = 5;
+  string from = 6;
+  string till = 7;
+  uint32 weight = 8;
+  uint32 volume = 9;
+  uint32 cost = 10;
+  repeated string transportType = 11;
+  repeated string loadingType = 12;
+  repeated string addition = 13;
+  repeated string additionalPhones = 14;
+  repeated string additionalMails = 15;
+  string currency = 16;
+  message Owner {
+    uint64 id = 1;
+    string name = 2;
+  }
+  Owner owner = 17;
+  string cargoType = 18;
+}
+
+message FindCargoResponse {
+  repeated FindCargoResult cargos = 1;
+  uint64 found = 2;
+}
+
+service CargoService {
+  rpc Get(CargoRequest) returns(FindCargoResult){}
+  rpc Find(FindCargoRequest) returns(FindCargoResponse) {}
+  rpc Create(Cargo) returns (CargoResponse) {}
+  rpc Update(Cargo) returns (CargoResponse) {}
+  rpc Delete(CargoRequest) returns (CargoResponse) {}
+}

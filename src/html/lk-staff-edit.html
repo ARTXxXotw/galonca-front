@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мои сотрудники</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body data-controller="templateAuthCheck">
+
+<header data-controller="templateHeader"></header>
+
+  <main>
+    <section class="main__baner-lk">
+      <strong class="main__baner-title">
+        Личный кабинет
+      </strong>
+    </section>
+    <section class="lk-nav-top__section">
+      <div class="container lk-nav-top__container">
+        <ul class="lk-nav-top">
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="index.html">Главная</a>
+          </li>
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="lk-data.html">Личный кабинет</a>
+          </li>
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="lk-staff.html">Мои сотрудники</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="lk__section">
+      <div class="container lk__container">
+        <div class="lk__container-col">
+          <div class="lk-nav__box" data-controller="templateLkNav">
+            <!-- навигация внутри ЛК -->
+          </div>
+        </div>
+        <div class="lk__container-col staff__col">
+          <div class="staff-container__header">
+            <h4 class="lk__title">Редактировать данные сотрудника</h4>
+            <a href="lk-staff.html" class="favorites-box__contact staff__btn">Мои сотрудники</a>
+          </div>
+
+          <div class="form-adding col-sm-7 mt-5">
+            <p class="form-adding__text">Поля, отмеченные
+              <span class="form-adding__text_red">*</span>
+              обязательны для заполнения</p>
+
+            <div data-controller="lkStaffEdit">
+              <div id="form-request-box"></div>
+              <form id="tsl-edit-employee" class="needs-validation" autocomplete="off"  novalidate>
+
+                <fieldset class="row mb-3">
+                  <label for="info-fio" class="col-sm-12 col-form-label">* Имя и фамилия сотрудника</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="info-fio" placeholder="Как обращаться к сотруднику" name="fio" required="">
+                    <div class="invalid-feedback">
+                      Пожалуйста, заполните поле
+                    </div>
+                  </div>
+                </fieldset>
+
+                <fieldset class="row mb-3">
+                  <label for="info-email" class="col-sm-12 col-form-label">* Email (Будет логином сотрудника)</label>
+                  <div class="col-sm-12">
+                    <input type="email" class="form-control" id="info-email" placeholder="Контактный email сотрудника" name="email" required="">
+                    <div class="invalid-feedback">
+                      Пожалуйста, заполните поле
+                    </div>
+                  </div>
+                </fieldset>
+
+                <fieldset class="row mb-3">
+                  <label for="info-phone" class="col-sm-12 col-form-label">* Телефон сотрудника</label>
+                  <div class="col-sm-12">
+                    <input type="tel" class="form-control" id="info-phone" placeholder="Контактный телефон сотрудника" name="phone" required="">
+                    <div class="invalid-feedback">
+                      Пожалуйста, заполните поле
+                    </div>
+                  </div>
+                </fieldset>
+
+                <fieldset class="row mb-3">
+                  <label for="info-password" class="col-sm-12 col-form-label">Новый пароль</label>
+                  <p>Пароль должен быть: не менее 8 символов, на латинице, содержать минимум одну цифру, одну заглавную букву. </p>
+                  <div class="col-sm-12 form-adding-pass">
+                    <input type="password" class="form-control showpass" id="info-password" placeholder="Ваш пароль" value="" autocomplete="off" name="pass" data-lkStaffAdd-target="password">
+                    <div class="invalid-feedback">
+                      Пожалуйста, заполните поле
+                    </div>
+                    <span class="password-control password-control--reg" data-action="click->lkStaffEdit#showPass"></span>
+
+                    <ul class="info-password-check" id="info-password-check">
+                      <li id="letter">Минимум <strong>одна буква</strong></li>
+                      <li id="capital">Минимум <strong>одна заглавная буква</strong></li>
+                      <li id="number">Минимум <strong>одна цифра</strong></li>
+                      <li id="length">Быть не менее <strong>8 символов</strong></li>
+                    </ul>
+                  </div>
+                </fieldset>
+
+
+
+                <fieldset class="row mb-3">
+                  <div class="col-sm-12">
+                    <button class="adding__dtn adding__dtn--lk" type="button" data-action="click->lkStaffEdit#UserSaveChange">Обновить данные</button>
+                  </div>
+                </fieldset>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer data-controller="templateFooter"></footer>
+
+</body>
+
+</html>

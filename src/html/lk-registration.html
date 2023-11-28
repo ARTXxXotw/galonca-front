@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body id="int-phone">
+
+<header data-controller="templateHeader"></header>
+
+    <main>
+      <section class="main__baner main__baner-adding-cargo">
+        <div class="container">
+          <h2 class="main__baner-title">
+             Регистрация
+          </h2>
+        </div>
+      </section>
+
+      <section class="adding-carg__section">
+        <div class="container">
+          <div class="container-adding">
+            <div class="col-sm-12" id="form-request-box"></div>
+
+            <div class="form-adding col-sm-7">
+              <p class="form-adding__text">Поля, отмеченные
+                <span class="form-adding__text_red">*</span>
+                обязательны для заполнения</p>
+
+              <div data-controller="lkRegistration">
+
+                <form id="tsl-registration" class="needs-validation" novalidate>
+
+                  <fieldset class="row mb-3">
+                    <label for="info-fio" class="col-sm-12 col-form-label">* Ваши имя и фамилия</label>
+                    <div class="col-sm-12">
+                      <input type="text" class="form-control" id="info-fio" placeholder="Как к вам обращаться" name="fio" required="">
+                      <div class="invalid-feedback">
+                        Пожалуйста, заполните поле
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="row mb-3">
+                    <label for="info-email" class="col-sm-12 col-form-label">* Email (Будет вашим логином)</label>
+                    <div class="col-sm-12">
+                      <input type="email" class="form-control" id="info-email" placeholder="Ваш контактный email" name="email" required="">
+                      <div class="invalid-feedback">
+                        Пожалуйста, заполните поле
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <fieldset class="row mb-3">
+                    <label for="info-phone" class="col-sm-12 col-form-label">* Ваш телефон</label>
+                    <div class="row phone-code-box">
+                      <div class="phone-code-state">
+                        <select id="info-phone-list"></select>
+                        <div id="info-phone-box" class="info-phone-box-data"></div>
+                      </div>
+                      <div class="phone-code-num">
+                        <input type="text" class="form-control phone-num" id="info-phone"  name="phone" required="">
+                        <div class="invalid-feedback">
+                          Пожалуйста, заполните поле
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+
+
+                 <!-- <fieldset class="row mb-3">
+                    <label for="info-phone" class="col-sm-12 col-form-label">* Ваш телефон</label>
+                    <div class="col-sm-12">
+                      <input type="tel" class="form-control" id="info-phone" placeholder="Ваш контактный телефон" name="phone" required="">
+                      <div class="invalid-feedback">
+                        Пожалуйста, заполните поле
+                      </div>
+                    </div>
+                  </fieldset>-->
+
+                  <fieldset class="row mb-3">
+                    <label for="info-password" class="col-sm-12 col-form-label">* Ваш пароль (только латиница)</label>
+                    <ul class="info-password-check" id="info-password-check">
+                      <li id="letter">Минимум <strong>одна буква</strong></li>
+                      <li id="capital">Минимум <strong>одна заглавная буква</strong></li>
+                      <li id="number">Минимум <strong>одна цифра</strong></li>
+                      <li id="length">Не менее <strong>8 символов</strong></li>
+                    </ul>
+                    <div class="col-sm-12 form-adding-pass">
+                      <input type="password" class="form-control showpass" id="info-password" autocomplete="off" placeholder="Ваш пароль" value="" name="pass" required="" data-lkRegistration-target="password">
+                      <div class="invalid-feedback">
+                        Пожалуйста, заполните поле
+                      </div>
+                      <span class="password-control password-control--reg" data-action="click->lkRegistration#showPass"></span>
+
+
+                    </div>
+
+
+                          </fieldset>
+
+
+                  <fieldset class="row mb-3">
+                    <label for="info-password" class="col-sm-12 col-form-label">* Подвердите Ваш пароль</label>
+                    <div class="col-sm-12 form-adding-pass">
+                      <input type="password" class="form-control showpass" id="info-password-add"  autocomplete="off"  placeholder="Ваш пароль" value="" name="passadd" required="" data-lkRegistration-target="passwordadd">
+                      <div class="invalid-feedback">
+                        Пожалуйста, заполните поле
+                      </div>
+                      <span class="password-control password-control--reg" data-action="click->lkRegistration#showPassAdd"></span>
+                      <div class="pass-match"></div>
+                    </div>
+                  </fieldset>
+
+
+                  <fieldset class="row mb-3 ">
+                    <div class="form-checkbox__col">
+                      <div class="adding__checkbox mt-3">
+                        <input type="checkbox" name="conditions" id="conditions" value="conditions" data-action="click->lkRegistration#conditions">
+                        <label for="conditions" class="checkbox__lable">Я соглашаюсь с <a  class="default-link" href="info-conditions.html">условиями использования</a></label>
+                      </div>
+                    </div>
+
+                  </fieldset>
+
+
+                  <fieldset class="row mb-3">
+                    <div class="col-sm-12">
+                      <button class="adding__dtn adding__dtn--lk" id="lk-reg" type="button" data-action="click->lkRegistration#registration">Зарегистрироваться</button>
+                    </div>
+                  </fieldset>
+
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+    </main>
+
+  <footer data-controller="templateFooter"></footer>
+
+</body>
+</html>

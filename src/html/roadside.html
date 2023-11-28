@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Придорожный сервис</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest">
+    <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+<header data-controller="templateHeader"></header>
+
+  <main class="main__roadside">
+
+    <section class="main__baner main__baner-roadside">
+      <div class="container">
+        <h2 class="main__baner-title">
+          Кафе, гостиницы, автомойки и паркинги
+        </h2>
+      </div>
+    </section>
+
+    <section class="roadside-section">
+      <div class="container">
+        <div class="roadside__container" data-controller="addingRoadside filter">
+          <div class="roadside__col-form">
+            <form action="" class="filter__form filter__form-roadside" id="roadsideFilterForm">
+              <h4 class="form__title form__title-service">
+                Фильтр
+              </h4>
+
+                <!-- адрес город автокоплит с поиском   -->
+                <fieldset class="form__fieldset form__fieldset-city">
+                    <legend class="form__legend">Город</legend>
+                    <div class="form__city serviceAddressCity"></div>
+                </fieldset>
+                <!-- /адрес город автокоплит с поиском   -->
+
+
+                <!-- Категория -->
+                <fieldset class="form__fieldset form__block-size">
+                    <legend class="form__legend">Категория:</legend>
+                    <div class="form-adding__row form-adding__row-check form__filter-check">
+                        <div class="adding__radio ">
+                            <input type="radio" name="category" value="1" id="category-cafe" class="check-hotel">
+                            <label class="checkbox__lable" for="category-cafe">Придорожное кафе</label>
+                        </div>
+                        <div class="adding__radio adding__checkbox--green">
+                            <input type="radio" name="category" value="0" id="category-hotel" class="check-parking">
+                            <label class="checkbox__lable" for="category-hotel">Придорожная гостиница</label>
+                        </div>
+                        <div class="adding__radio adding__checkbox--yellow">
+                            <input type="radio" name="category" value="2" id="category-parking">
+                            <label class="checkbox__lable" for="category-parking">Паркинг</label>
+                        </div>
+                        <div class="adding__radio adding__checkbox--red">
+                            <input type="radio" name="category" value="3" id="category-autowashing">
+                            <label class="checkbox__lable" for="category-autowashing">Автомойка</label>
+                        </div>
+
+                    </div>
+                </fieldset>
+                <!-- /Категория -->
+
+
+
+                <button type="button" value="Применить" class="form__btn" data-action="click->filter#roadsideLoadMore" id="buttonFilter">Применить</button>
+
+                <button type="button" value="Очистить фильтр" class="form__btn--clear" data-action="click->filter#filterClear">Очистить фильтр</button>
+            </form>
+          </div>
+          <div class="content__col cargo-box__col-data">
+              <div class="sorting">
+                  <div class="sorting__row">
+                      <div class="sorting__row-adaptive">
+                          <div class="sorting__total">Всего найдено объявлений: <span id="roadside-total"></span>
+                              | <span id="roadside-find-text">Показано:</span> <span id="roadside-find"></span>
+                              | Страница <span id="roadside-page">1</span>
+                          </div>
+                         <!-- <div class="sorting__sort">Сортировка</div>-->
+                      </div>
+                      <div class="sorting__row-adaptive">
+                         <!-- <select name="" class="sorting__select" data-action="click->filter">
+                              <option value="">За все время</option>
+                              <option value="">За последний час</option>
+                              <option value="">За 4 часа</option>
+                              <option value="">За сегодня</option>
+                              <option value="">За 3 дня</option>
+                              <option value="">За неделю</option>
+                              <option value="">За месяц</option>
+                          </select>-->
+                          <a href="roadside-map.html" class="sto__map sto__map-service" id="roadside-on-map">Заведения на карте</a>
+                      </div>
+                  </div>
+              </div>
+
+
+            <div class="roadside__content" data-controller="roadside-list" data-roadside-list-limit-value="6" id="roadsidesList">
+              <!-- список придорожных заведений -->
+            </div>
+
+              <div class="download-more">
+                  <button class="btn__download-more" data-action="click->filter#roadsideLoadMore">Загрузить еще</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!--    <section class="country-city">
+      <div class="cargo-country">
+        <h2 class="container__title cargo-country__container__title">Услуги по Казахстану</h2>
+        <div class="cargo-country__links" data-controller="roadsideListCity"></div>
+      </div>
+    </section>-->
+
+  </main>
+
+
+  <footer data-controller="templateFooter"></footer>
+
+</body>
+</html>

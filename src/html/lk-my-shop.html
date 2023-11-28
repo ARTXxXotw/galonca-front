@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мои заведения</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body data-controller="templateAuthCheck">
+
+<header data-controller="templateHeader"></header>
+
+  <main>
+    <section class="main__baner-lk">
+      <strong class="main__baner-title">
+        Личный кабинет
+      </strong>
+    </section>
+    <section class="lk-nav-top__section">
+      <div class="container lk-nav-top__container">
+        <ul class="lk-nav-top">
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="index.html">Главная</a>
+          </li>
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="lk-data.html">Личный кабинет</a>
+          </li>
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="lk-my-shop.html">Мои заведения</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="lk__section">
+      <div class="container lk__container">
+        <div class="lk__container-col">
+          <div class="lk-nav__box" data-controller="templateLkNav">
+          <!-- навигация внутри ЛК -->
+        </div>
+        </div>
+        <div class="lk__container-col staff__col">
+          <div class="staff-container__header">
+            <h4 class="lk__title">Мои заведения</h4>
+            <a href="adding-roadside.html" class="favorites-box__contact my-ads__btn">Добавить</a>
+          </div>
+          <div class="my-ads__content my-shop__content">
+            <div class="my-ads__filter">
+              <button class="my-ads__filter-btn my-ads__filter-btn_active">Все</button>
+              <button class="my-ads__filter-btn">СТО</button>
+              <button class="my-ads__filter-btn">Придорожные Кафе</button>
+              <button class="my-ads__filter-btn">Придорожные Гостиницы</button>
+            </div>
+            <div class="my-ads__row_max">
+              <div class="field__row">
+                <div class="field__theme">актуальные</div>
+                <div class="field__theme">архив</div>
+              </div>
+            </div>
+            <div class="favorites__content  my-shop__box">
+              <div class="favorites-content__box">
+                <div class="roadside-box favorites-box">
+                  <img src="img/shop.jpg" alt="кафе" class="favorites__box-img">
+                  <div class="content-box__info">
+                    <div class="roadside-box__card">
+                      <span class="roadside__card favorites__card">Придорожные кафе</span>
+                    </div>
+                    <div class="top-sto__name content-box__name">“Пончики-блинчики”</div>
+                    <div class="top-sto__direction favorites__direction">г. Алматы, Первомайка, ул. Ключевая 1г</div>
+                    <div class="top-sto__review content-box__review">Отзывов:
+                      <span class="top-sto__namb">7</span>
+                      <span class="like favorites-like">5</span>
+                      <span class="dislike">5</span>
+                    </div>
+                    <button class="top-sto__box-btn">Показать контакты</button>
+                    <div class="shop-btn__row">
+                      <button class="ads__btn ads__btn-edit my-shop__btn my-shop__btn-edit">
+                        <span class="ads__btn-img ads__btn-img-edit"></span>
+                        Редактировать
+                      </button>
+                      <button class="ads__btn ads__btn-del my-shop__btn">
+                        <span class="ads__btn-img ads__btn-img-del"></span>
+                        Удалить
+                      </button>
+                   </div>
+                  </div>
+                </div>
+              </div>
+              <div class="favorites-content__box my-shop__content-box">
+                <div class="roadside-box favorites-box">
+                  <img src="img/shop.jpg" alt="кафе" class="favorites__box-img">
+                  <div class="content-box__info">
+                    <div class="roadside-box__card">
+                      <span class="roadside__card favorites__card">Придорожные кафе</span>
+                    </div>
+                    <div class="top-sto__name content-box__name">“Пончики-блинчики”</div>
+                    <div class="top-sto__direction favorites__direction">г. Алматы, Первомайка, ул. Ключевая 1г</div>
+                    <div class="top-sto__review content-box__review">Отзывов:
+                      <span class="top-sto__namb">7</span>
+                      <span class="like favorites-like">5</span>
+                      <span class="dislike">5</span>
+                    </div>
+                    <button class="top-sto__box-btn">Показать контакты</button>
+                    <div class="shop-btn__row">
+                      <button class="ads__btn ads__btn-edit my-shop__btn my-shop__btn-edit">
+                        <span class="ads__btn-img ads__btn-img-edit"></span>
+                        Редактировать
+                      </button>
+                      <button class="ads__btn ads__btn-del my-shop__btn">
+                        <span class="ads__btn-img ads__btn-img-del"></span>
+                        Удалить
+                      </button>
+                   </div>
+                  </div>
+                </div>
+              </div>
+             </div>
+             <div class="favorites__content  my-shop__box">
+              <div class="favorites-content__box">
+                <div class="roadside-box favorites-box">
+                  <img src="img/shop.jpg" alt="кафе" class="favorites__box-img">
+                  <div class="content-box__info">
+                    <div class="roadside-box__card">
+                      <span class="roadside__card favorites__card">Придорожные кафе</span>
+                    </div>
+                    <div class="top-sto__name content-box__name">“Пончики-блинчики”</div>
+                    <div class="top-sto__direction favorites__direction">г. Алматы, Первомайка, ул. Ключевая 1г</div>
+                    <div class="top-sto__review content-box__review">Отзывов:
+                      <span class="top-sto__namb">7</span>
+                      <span class="like favorites-like">5</span>
+                      <span class="dislike">5</span>
+                    </div>
+                    <button class="top-sto__box-btn">Показать контакты</button>
+                    <div class="shop-btn__row">
+                      <button class="ads__btn ads__btn-edit my-shop__btn my-shop__btn-edit">
+                        <span class="ads__btn-img ads__btn-img-edit"></span>
+                        Редактировать
+                      </button>
+                      <button class="ads__btn ads__btn-del my-shop__btn">
+                        <span class="ads__btn-img ads__btn-img-del"></span>
+                        Удалить
+                      </button>
+                   </div>
+                  </div>
+                </div>
+              </div>
+              <div class="favorites-content__box my-shop__content-box">
+                <div class="roadside-box favorites-box">
+                  <img src="img/shop.jpg" alt="кафе" class="favorites__box-img">
+                  <div class="content-box__info">
+                    <div class="roadside-box__card">
+                      <span class="roadside__card favorites__card">Придорожные кафе</span>
+                    </div>
+                    <div class="top-sto__name content-box__name">“Пончики-блинчики”</div>
+                    <div class="top-sto__direction favorites__direction">г. Алматы, Первомайка, ул. Ключевая 1г</div>
+                    <div class="top-sto__review content-box__review">Отзывов:
+                      <span class="top-sto__namb">7</span>
+                      <span class="like favorites-like">5</span>
+                      <span class="dislike">5</span>
+                    </div>
+                    <button class="top-sto__box-btn">Показать контакты</button>
+                    <div class="shop-btn__row">
+                      <button class="ads__btn ads__btn-edit my-shop__btn my-shop__btn-edit">
+                        <span class="ads__btn-img ads__btn-img-edit"></span>
+                        Редактировать
+                      </button>
+                      <button class="ads__btn ads__btn-del my-shop__btn">
+                        <span class="ads__btn-img ads__btn-img-del"></span>
+                        Удалить
+                      </button>
+                   </div>
+                  </div>
+                </div>
+              </div>
+             </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer data-controller="templateFooter"></footer>
+
+</body>
+
+</html>

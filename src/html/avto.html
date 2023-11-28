@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Автотранспорт</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+</head>
+<body>
+
+<header data-controller="templateHeader"></header>
+
+  <main>
+    <section class="main__baner main__baner-auto">
+      <div class="container">
+        <h2 class="main__baner-title">
+          Автотранспорт
+        </h2>
+      </div>
+    </section>
+
+    <section class="auto__section">
+      <div class="container">
+        <div class="avto__container" data-controller="addingAvtoSale filter">
+          <div class="avto__form">
+            <form action="" class="filter__form filter__form-roadside"  id="autoFilterForm">
+              <h4 class="form__title form__title-service">
+                Фильтр
+              </h4>
+
+              <!-- продажа\аренда -->
+              <fieldset class="form__fieldset form__block-size">
+                <legend class="form__legend">Тип объявления</legend>
+                <div class="form-adding__row form-adding__row-check form__filter-check">
+                  <div class="adding__radio">
+                    <input type="radio" name="salestype" value="0" id="type-sale">
+                    <label class="checkbox__lable" for="type-sale">Продажа</label>
+                  </div>
+                  <div class="adding__radio  adding__checkbox--green">
+                    <input type="radio" name="salestype" value="1" id="check-rent">
+                    <label class="checkbox__lable" for="check-rent">Аренда</label>
+                  </div>
+                  <div class="adding__radio  adding__checkbox--yellow">
+                    <input type="radio" name="salestype" value="2" id="check-leasing">
+                    <label class="checkbox__lable" for="check-leasing">Лизинг</label>
+                  </div>
+                </div>
+              </fieldset>
+              <!-- /продажа\аренда -->
+
+              <!-- адрес город автокоплит с поиском   -->
+              <fieldset class="form__fieldset form__fieldset-city">
+                <legend class="form__legend">Город</legend>
+                <div class="form__city serviceAddressCity"></div>
+              </fieldset>
+              <!-- /адрес город автокоплит с поиском   -->
+
+              <!-- состояние   -->
+              <fieldset class="form__fieldset form__block-size">
+                <legend class="form__legend">Состояние</legend>
+
+                <div class="form-adding__row form-adding__row-check form__filter-check">
+                  <div class="adding__radio">
+                    <input type="radio" name="condition" id="check-new" value="Новая">
+                    <label for="check-new" class="checkbox__lable">Новая</label>
+                  </div>
+                  <div class="adding__radio  adding__checkbox--green">
+                    <input type="radio" name="condition" id="check-used" value="Б\У">
+                    <label for="check-used" class="checkbox__lable">Б\У</label>
+                  </div>
+                  <div class="adding__radio  adding__checkbox--yellow">
+                    <input type="radio" name="condition" id="check-emergency" value="Аварийный">
+                    <label for="check-emergency" class="checkbox__lable">Аварийный</label>
+                  </div>
+                </div>
+              </fieldset>
+              <!-- /состояние   -->
+
+              <!-- транспорт  - несколько инпутов   -->
+              <fieldset class="form__fieldset form__fieldset-city">
+                <legend class="form__legend">Транспорт</legend>
+
+                <div class="form__city mb-3">
+                  <div class="adding__radio">
+                    <input type="radio" name="autoType" id="autoType-auto" value="Автомобиль">
+                    <label for="autoType-auto" class="checkbox__lable">Автомобиль</label>
+                  </div>
+                  <div class="adding__radio adding__checkbox--green">
+                    <input type="radio" name="autoType" id="autoType-bus" value="Автобус">
+                    <label for="autoType-bus" class="checkbox__lable">Автобус</label>
+                  </div>
+                  <div class="adding__radio  adding__checkbox--yellow">
+                    <input type="radio" name="autoType" id="autoType-special"  value="Спецтехника">
+                    <label for="autoType-special" class="checkbox__lable">Спецтехника</label>
+                  </div>
+                </div>
+
+                <div class="form__city mb-3">
+                  <label class="form__legend">Тип транспорта</label>
+                  <select name="transportType[]" id="transport-type" class="form-control" required="required">
+                    <option></option>
+                  </select>
+                  <div id="info-transport-list"></div>
+                </div>
+
+                <div class="form__city mb-3 fuel-type-box">
+                  <label class="form__legend">Тип топлива</label>
+                  <select name="fuelType[]" id="fuel-type" class="form-control fuel-type">
+                    <option value="all">все типы</option>
+                    <option value="дизель">дизель</option>
+                    <option value="бензин">бензин</option>
+                    <option value="газ">газ</option>
+                    <option value="гибрид">гибрид</option>
+                  </select>
+                </div>
+
+                <div class="form__city mb-3">
+                  <label class="form__legend">Марка</label>
+                  <select name="brand[]" id="brand" class="form-control" required="required">
+                    <option></option>
+                  </select>
+                  <div id="info-brand-list"></div>
+                </div>
+              </fieldset>
+              <!-- /транспорт   -->
+
+              <!-- Стоимость -->
+              <fieldset class="form__fieldset form__block-size">
+                <legend class="form__legend">Стоимость</legend>
+                <div class="form__block mb-3">
+                  <div class="form__text">от
+                    <input type="number" name="costFrom"  class="form-control form-control--filter" placeholder="1">
+                  </div>
+                  <div class="form__text">до
+                    <input type="number" name="costTill" class="form-control form-control--filter" placeholder="100000">
+                  </div>
+                </div>
+
+                <div class="form__city currency-box">
+                  <!-- валюта -->
+                </div>
+              </fieldset>
+              <!-- /Стоимость -->
+
+              <button type="button" value="Применить" class="form__btn" data-action="click->filter#filterAuto" id="buttonFilter">Применить</button>
+
+              <button type="button" value="Очистить фильтр" class="form__btn--clear" data-action="click->filter#filterClear">Очистить фильтр</button>
+            </form>
+          </div>
+          <div class="content__col cargo-box__col-data">
+            <div class="sorting">
+              <div class="sorting__row">
+                <div class="sorting__row-adaptive">
+                  <div class="sorting__total">Всего найдено объявлений: <span id="avto-total"></span>
+                    | <span id="avto-find-text">Показано:</span> <span id="avto-find"></span>
+                    | Страница <span id="avto-page">1</span></div>
+                  <div class="sorting__favorit">
+                    <!-- <span class="sorting__favorit-lable">2</span>
+                     Избранное-->
+                  </div>
+                </div>
+                <div class="sorting__row-adaptive">
+                  <div class="sorting__sort"></div>
+                 <!-- <select name="" class="sorting__select" data-action="click->filter">
+                    <option value="">За все время</option>
+                    <option value="">За последний час</option>
+                    <option value="">За 4 часа</option>
+                    <option value="">За сегодня</option>
+                    <option value="">За 3 дня</option>
+                    <option value="">За неделю</option>
+                    <option value="">За месяц</option>
+                  </select>-->
+                </div>
+              </div>
+            </div>
+            <div class="roadside__content" data-controller="avto-list" id="avtoList">
+              <!-- список -->
+            </div>
+            <div class="download-more">
+              <button class="btn__download-more" data-action="click->filter#autoLoadMore">Загрузить еще</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <!-- <section class="country-city">
+      <div class="cargo-country">
+        <h2 class="container__title cargo-country__container__title">Автомобили по Казахстану</h2>
+        <div class="cargo-country__links" data-controller="avtoListCity">
+        </div>
+    </div>
+  </section>-->
+
+
+  </main>
+
+  <footer data-controller="templateFooter"></footer>
+
+
+</body>
+</html>

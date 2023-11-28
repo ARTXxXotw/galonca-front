@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мои объявления</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body data-controller="templateAuthCheck">
+
+<header data-controller="templateHeader"></header>
+
+<main>
+  <section class="main__baner-lk">
+    <strong class="main__baner-title">
+      Личный кабинет
+    </strong>
+  </section>
+  <section class="lk-nav-top__section">
+    <div class="container lk-nav-top__container">
+      <ul class="lk-nav-top">
+        <li class="lk-nav-top__item">
+          <a class="lk-nav-top__link" href="index.html">Главная</a>
+        </li>
+        <li class="lk-nav-top__item">
+          <a class="lk-nav-top__link" href="lk-data.html">Личный кабинет</a>
+        </li>
+        <li class="lk-nav-top__item">
+          <a class="lk-nav-top__link" href="lk-my-ads.html">Мои объявления</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="lk__section">
+    <div class="container lk__container">
+      <div class="lk__container-col">
+        <div class="lk-nav__box" data-controller="templateLkNav">
+          <!-- навигация внутри ЛК -->
+        </div>
+      </div>
+      <div class="lk__container-col lk-col__data" data-controller="lk-my-adds">
+        <div class="lk-container__header">
+          <div class="lk-container__header_left">
+            <h4 class="lk__title">Мои объявления</h4>
+          </div>
+        </div>
+
+        <div class="col-sm-12 mb-5">
+          <form action="" id="dateFilterForm">
+            <!-- Дата погрузки -->
+            <fieldset class="row col-sm-12 col-md-8 mt-4">
+              <strong style="padding-left: 0">Выбрать объявления</strong>
+              <div class="col-sm-12 col-md-6" style="padding-left: 0">
+
+                <label class="form-label" for="shipmentdate-from">От</label>
+                <input type="text" name="shipmentdateFrom" id="shipmentdate-from" class="form-control datepicker-box" autocomplete="off" value="">
+              </div>
+
+              <div class="col-sm-12 col-md-6">
+                <label class="form-label" for="shipmentdate-to">До</label>
+                <input type="text" name="shipmentdateUntil" id="shipmentdate-to" class="form-control datepicker-box"  autocomplete="off" value="">
+              </div>
+            </fieldset>
+              <!-- /Дата погрузки -->
+
+            <div class="col-sm-12">
+              <div class="input-group mb-3">
+                <button class="btn btn-outline-secondary" type="button" id="ads-yesterday" data-action="click->lk-my-adds#dateFilterYesterday">вчера</button>
+                <button class="btn btn-outline-secondary" type="button" id="ads-today" data-action="click->lk-my-adds#dateFilterToday">сегодня</button>
+                <button class="btn btn-outline-secondary" type="button" id="ads-week" data-action="click->lk-my-adds#dateFilterWeek">неделя</button>
+                <button class="btn btn-outline-secondary" type="button" id="ads-month" data-action="click->lk-my-adds#dateFilterMonth">месяц</button>
+                <button class="btn btn-outline-secondary" type="button" id="ads-year" data-action="click->lk-my-adds#dateFilterYear">год</button>
+                <button class="btn btn-outline-secondary" type="button" id="ads-all" data-action="click->lk-my-adds#dateFilterAll">все</button>
+              </div>
+
+              <button type="button" class="btn btn-primary" data-action="click->lk-my-adds#dateFilter">Отфильтровать по дате</button>
+            </div>
+          </form>
+        </div>
+
+        <ul class="nav nav-tabs favorites-tab" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="myAds-cargo-tab" data-bs-toggle="tab" data-bs-target="#myAds-cargo" type="button" role="tab" aria-controls="cargo" aria-selected="true">Груз</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="myAds-truck-tab" data-bs-toggle="tab" data-bs-target="#myAds-truck" type="button" role="tab" aria-controls="truck" aria-selected="true">Транспорт</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="myAds-sto-tab" data-bs-toggle="tab" data-bs-target="#myAds-sto" type="button" role="tab" aria-controls="sto" aria-selected="true">СТО</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="myAds-spare-tab" data-bs-toggle="tab" data-bs-target="#myAds-spare" type="button" role="tab" aria-controls="spare" aria-selected="true">Запчасти</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="myAds-roadside-tab" data-bs-toggle="tab" data-bs-target="#myAds-roadside-box" type="button" role="tab" aria-controls="roadside" aria-selected="false">Сервис</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="myAds-auto-tab" data-bs-toggle="tab" data-bs-target="#myAds-auto-box" type="button" role="tab" aria-controls="auto" aria-selected="false">Автотранспорт</button>
+          </li>
+        </ul>
+        <div class="tab-content favorites-tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="myAds-cargo" role="tabpanel" aria-labelledby="myAds-cargo-tab"></div>
+          <div class="tab-pane fade" id="myAds-truck" role="tabpanel" aria-labelledby="myAds-truck-tab"></div>
+          <div class="tab-pane fade" id="myAds-sto" role="tabpanel" aria-labelledby="myAds-sto-tab"></div>
+          <div class="tab-pane fade" id="myAds-spare" role="tabpanel" aria-labelledby="myAds-spare-tab"></div>
+          <div class="tab-pane fade" id="myAds-roadside-box" role="tabpanel" aria-labelledby="myAds-roadside-tab">
+            <div class="roadside__content" id="myAds-roadside"></div>
+          </div>
+          <div class="tab-pane fade" id="myAds-auto-box" role="tabpanel" aria-labelledby="myAds-auto-tab">
+            <div class="roadside__content" id="myAds-auto"></div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer data-controller="templateFooter"></footer>
+
+</body>
+
+</html>

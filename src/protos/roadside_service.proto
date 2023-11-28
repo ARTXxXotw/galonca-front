@@ -1,0 +1,87 @@
+syntax = "proto3";
+
+//import "google/protobuf/timestamp.proto";
+import "src/protos/cargo.proto";
+option go_package = "/api";
+package api;
+
+enum RoadsideServiceType {
+  motel = 0;
+  food = 1;
+  parking = 2;
+  carWash = 3;
+}
+
+message RoadsideService {
+  uint64 id = 1;
+  RoadsideServiceType type = 2;
+  string title = 3;
+  string description = 4;
+  Geo location = 5;
+  string address = 6;
+  repeated string images = 7;
+  repeated string phone = 8;
+  repeated string email = 9;
+  repeated string keys = 10;
+  double lat = 11;
+  double lon = 12;
+}
+
+message RoadsideServiceRequest {
+  uint64 id = 1;
+}
+
+message RoadsideServiceResponse {
+  uint64 id = 1;
+  bool success = 2;
+}
+
+message FindRoadsideServiceRequest {
+  uint32 type = 1;
+  Geo location = 2;
+  repeated string keys = 3;
+  uint32 limit = 9;
+  uint32 offset = 10;
+}
+
+message FindRoadsideServiceResult {
+  uint64 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  message ShortGeo {
+    uint64 id = 1;
+    string name = 2;
+    uint32 type = 3;
+    string address = 4;
+    double lat = 5;
+    double lon = 6;
+  }
+  ShortGeo location = 4;
+  uint32 type = 5;
+  string title = 6;
+  string description = 7;
+  repeated string keys = 11;
+  repeated string images = 12;
+  repeated string phone = 13;
+  repeated string email = 14;
+  message Owner {
+    uint64 id = 1;
+    string name = 2;
+  }
+  Owner owner = 17;
+  int32 likes = 18;
+  int32 dislikes = 19;
+}
+
+message FindRoadsideServiceResponse {
+  repeated FindRoadsideServiceResult RoadsideServices = 1;
+  uint64 found = 2;
+}
+
+service RoadsideServiceService {
+  rpc Get(RoadsideServiceRequest) returns(FindRoadsideServiceResult){}
+  rpc Find(FindRoadsideServiceRequest) returns(FindRoadsideServiceResponse) {}
+  rpc Create(RoadsideService) returns (RoadsideServiceResponse) {}
+  rpc Update(RoadsideService) returns (RoadsideServiceResponse) {}
+  rpc Delete(RoadsideServiceRequest) returns (RoadsideServiceResponse) {}
+}

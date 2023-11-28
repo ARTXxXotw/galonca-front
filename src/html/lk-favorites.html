@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Избранное</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body data-controller="templateAuthCheck">
+
+<header data-controller="templateHeader"></header>
+
+  <main>
+    <section class="main__baner-lk">
+      <strong class="main__baner-title">
+        Личный кабинет
+      </strong>
+    </section>
+    <section class="lk-nav-top__section">
+      <div class="container lk-nav-top__container">
+        <ul class="lk-nav-top">
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="index.html">Главная</a>
+          </li>
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="lk-data.html">Личный кабинет</a>
+          </li>
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="lk-favorites.html">Избранное</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="lk__section">
+      <div class="container lk__container">
+        <div class="lk__container-col">
+          <div class="lk-nav__box" data-controller="templateLkNav">
+            <!-- навигация внутри ЛК -->
+          </div>
+        </div>
+        <div class="lk__container-col lk-col__data" data-controller="favorites">
+          <div class="lk-container__header">
+            <div class="lk-container__header_left">
+              <h4 class="lk__title">Избранное</h4>
+            </div>
+          </div>
+
+          <ul class="nav nav-tabs favorites-tab" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="favorites-cargo-tab" data-bs-toggle="tab" data-bs-target="#favorites-cargo" type="button" role="tab" aria-controls="cargo" aria-selected="true">Груз</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="favorites-truck-tab" data-bs-toggle="tab" data-bs-target="#favorites-truck" type="button" role="tab" aria-controls="truck" aria-selected="true">Транспорт</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="favorites-sto-tab" data-bs-toggle="tab" data-bs-target="#favorites-sto" type="button" role="tab" aria-controls="sto" aria-selected="true">СТО</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="favorites-spare-tab" data-bs-toggle="tab" data-bs-target="#favorites-spare" type="button" role="tab" aria-controls="spare" aria-selected="true">Запчасти</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="favorites-roadside-tab" data-bs-toggle="tab" data-bs-target="#favorites-roadside-box" type="button" role="tab" aria-controls="roadside" aria-selected="false">Сервис</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="favorites-auto-tab" data-bs-toggle="tab" data-bs-target="#favorites-auto-box" type="button" role="tab" aria-controls="auto" aria-selected="false">Автотранспорт</button>
+            </li>
+          </ul>
+          <div class="tab-content favorites-tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="favorites-cargo" role="tabpanel" aria-labelledby="favorites-cargo-tab"></div>
+            <div class="tab-pane fade" id="favorites-truck" role="tabpanel" aria-labelledby="favorites-truck-tab"></div>
+            <div class="tab-pane fade" id="favorites-sto" role="tabpanel" aria-labelledby="favorites-sto-tab"></div>
+            <div class="tab-pane fade" id="favorites-spare" role="tabpanel" aria-labelledby="favorites-spare-tab"></div>
+            <div class="tab-pane fade" id="favorites-roadside-box" role="tabpanel" aria-labelledby="favorites-roadside-tab">
+              <div class="roadside__content" id="favorites-roadside"></div>
+            </div>
+            <div class="tab-pane fade" id="favorites-auto-box" role="tabpanel" aria-labelledby="favorites-auto-tab">
+              <div class="roadside__content" id="favorites-auto"></div>
+            </div>
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer data-controller="templateFooter"></footer>
+
+<!--<script>
+  $( "#accordion" ).accordion({
+    heightStyle:  'content',
+    icons: 'false'
+  });
+</script>-->
+</body>
+
+</html>

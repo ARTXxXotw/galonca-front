@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Добавление груза</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body data-controller="templateAuthCheck">
+
+<header data-controller="templateHeader"></header>
+
+<main>
+  <section class="main__baner main__baner-transport">
+    <div class="container">
+      <h2 class="main__baner-title">
+        Добавить груз
+      </h2>
+    </div>
+  </section>
+
+  <section class="container__menu container__menu-add" data-controller="templateAddingFormNav">
+    <!-- статичный блок с линками на другие формы объявлений с подстветеоц текущей страницы  -->
+  </section>
+
+  <section class="container-adding-form">
+    <div class="container">
+      <div class="container-adding container__adding-avto" data-controller="addingCargo">
+        <p class="alert alert-info">Ваше объявление будет видно на сайте в течение 15 дней (до <span id="adv-15days"></span>). <br>Потом оно будет скрыто с сайта (уйдет <a class="alert-link" href="lk-my-ads.html">в архив</a>).  Скрытое объявление можно будет восстановить из архива. </p>
+
+        <p class="form-adding__text">Поля, отмеченные
+          <span class="form-adding__text_red">*</span>
+          обязательны для заполнения
+        </p>
+
+
+        <div id="form-request-box"></div>
+        <form id="addingCargoForm" class="form-adding needs-validation" novalidate>
+
+
+          <!-- пункт погрузки  мультиселект с поиском и добавлением -->
+          <fieldset class="row col-sm-12 col-md-8 addpoint-loadingbox">
+            <legend>Пункт погрузки</legend>
+          </fieldset>
+          <label class="col-sm-12 col-md-6 mb-4 addpoint-plus">
+            <input class="adding-form__btn" id="addpointloading" type="button" value="+" title="Добавить пункт" data-action="click->addingCargo#addPointLoading">
+            <span class="form-adding__addpointlabel">Добавить пункт погрузки</span>
+          </label>
+          <!-- /пункт погрузки  мультиселект с поиском и добавлением -->
+
+          <!-- пункт выгрузки  мультиселект с поиском и добавлением -->
+          <fieldset class="row col-sm-12 col-md-8 addpoint-unloadingbox">
+            <legend>Пункт выгрузки</legend>
+          </fieldset>
+          <label class="col-sm-12 col-md-6 mb-4 addpoint-plus">
+            <input class="adding-form__btn" id="addPointUnloading" type="button" value="+" title="Добавить пункт" data-action="click->addingCargo#addPointUnloading">
+            <span class="form-adding__addpointlabel">Добавить пункт выгрузки</span>
+          </label>
+          <!-- /пункт выгрузки  мультиселект с поиском и добавлением -->
+
+
+          <!-- Дата погрузки -->
+          <fieldset class="row col-sm-12 col-md-8 mt-4">
+            <legend>Дата погрузки</legend>
+            <div class="col-sm-12 col-md-6">
+              <label class="form-label" for="shipmentdate-from"><span class="form-adding__text_red">*</span> От</label>
+              <input type="text" name="shipmentdateFrom" id="shipmentdate-from" class="form-control datepicker-box" autocomplete="off" required="">
+              <div class="invalid-feedback">
+                Пожалуйста, заполните поле
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+              <label class="form-label" for="shipmentdate-until"><span class="form-adding__text_red">*</span> До</label>
+              <input type="text" name="shipmentdateUntil" id="shipmentdate-until" class="form-control datepicker-box" autocomplete="off"  required="">
+              <div class="invalid-feedback">
+                Пожалуйста, заполните поле
+              </div>
+            </div>
+          </fieldset>
+          <!-- /Дата погрузки -->
+
+
+          <!-- Тип транспорта и груза -->
+          <fieldset class="row col-sm-12 col-md-8 mt-4">
+            <legend>Тип транспорта и груза</legend>
+
+            <div class="col-sm-12 col-md-6">
+              <label class="form-label" for="transport"><span class="form-adding__text_red">*</span> Тип транспорта</label>
+              <select name="transport[]" id="transport" class="form-control" required="required" data-action="change->addingCargo#transportTypeChange">
+              </select>
+              <div class="invalid-feedback">
+                Пожалуйста, заполните поле
+              </div>
+            </div>
+
+
+            <div class="col-sm-12 col-md-6">
+              <label class="form-label" for="cargoType">Тип груза</label>
+              <select name="cargoType" id="cargoType" class="form-control">
+              </select>
+              <div class="invalid-feedback">
+                Пожалуйста, заполните поле
+              </div>
+            </div>
+          </fieldset>
+          <!-- /Транспорт -->
+
+          <!-- Параметры груза -->
+          <fieldset class="row col-sm-12 col-md-8 mt-4">
+            <legend>Параметры груза</legend>
+
+            <div class="col-sm-12 col-md-6">
+              <label class="form-label" for="weight"><span class="form-adding__text_red">*</span> Вес (т)</label>
+              <input type="number" name="weight" id="weight"  class="form-control" required>
+              <div class="invalid-feedback">
+                Пожалуйста, заполните поле
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+              <label class="form-label" for="volume"><span class="form-adding__text_red">*</span> Объем (М<sup>3</sup>)</label>
+              <input type="number" name="volume" id="volume" class="form-control" required>
+              <div class="invalid-feedback">
+                Пожалуйста, заполните поле
+              </div>
+            </div>
+          </fieldset>
+          <!-- /Параметры груза -->
+
+
+          <!-- Стоимость перевозки -->
+          <fieldset class="row col-sm-12 col-md-8 mt-4">
+            <legend>Стоимость перевозки</legend>
+            <div class="col-sm-12 col-md-6">
+              <label class="form-label" for="sum">Сумма</label>
+              <input type="number" name="sum" id="sum" class="form-control">
+              <div class="invalid-feedback">
+                Пожалуйста, заполните поле
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+              <label class="form-label" for="currency">Валюта</label>
+              <select name="currency" id="currency" class="form-control">
+                <option value="KZT">Казахстанские тенге &#8376;</option>
+                <option value="RUB">Российские рубли &#8381;</option>
+                <option value="USD">Доллары США $</option>
+                <option value="EUR">Евро &#8364;</option>
+              </select>
+            </div>
+          </fieldset>
+          <!-- /Стоимость перевозки -->
+
+
+
+
+          <!-- Вид погрузки -->
+          <fieldset class="row col-sm-12 col-md-8 mt-4">
+            <legend>Вид погрузки</legend>
+
+            <div class="form-adding__row form-adding__row-check mb-4" id="typeLoad"></div>
+          </fieldset>
+          <!-- /Вид погрузки -->
+
+          <!-- Дополнительно -->
+          <fieldset class="row col-sm-18 col-md-18 mt-4">
+            <legend>Дополнительно</legend>
+            <div class="additionally__row" id="additionally"></div>
+          </fieldset>
+          <!-- /Дополнительно -->
+
+
+          <!-- Объявление от -->
+          <fieldset class="row col-sm-12 col-md-8 mt-4">
+            <legend>Объявление от</legend>
+            <div class="row col-sm-12 col-md-12 mb-3" id="company-name">
+            </div>
+            <div class="row col-sm-12 col-md-12 mb-5">
+              <div class="col-sm-12 col-md-4">
+                Контактное лицо:
+              </div>
+              <div class="col-sm-12 col-md-8">
+                <strong id="default-name"></strong>
+              </div>
+            </div>
+
+            <!-- email +  добавить -->
+            <div class="row col-sm-12 col-md-12 mb-5">
+              <div class="col-sm-12 col-md-4">
+                <span class="form-adding__text_red" id="emailClearStar">*</span> Контактный email
+              </div>
+              <div class="col-sm-12 col-md-8">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox"  id="default-email-clear" data-action="click->addingCargo#emailClear">
+                  <label class="form-check-label" for="default-email-clear">
+                    Не показывать email в объявлении
+                  </label>
+                </div>
+                <div class="add-checkboxmail-box" id="default-email-box"></div>
+                <label class="form-adding__addpoint" id="labelAddEmail">
+                  <input class="adding-form__btn" type="button" value="+" title="Добавить пункт" data-action="click->addingCargo#addEmail">
+                  <span class="form-adding__addpointlabel">Добавить контактный email</span>
+                </label>
+              </div>
+            </div>
+            <!-- / email -->
+
+
+
+            <!-- телефон +  добавить  -->
+            <div class="row col-sm-12 col-md-12 mb-5">
+              <div class="col-sm-12 col-md-4">
+                <span class="form-adding__text_red">*</span> Контактный телефон
+              </div>
+              <div class="col-sm-12 col-md-8">
+                <div class="add-tel-box" id="default-tel-box"></div>
+                <label class="form-adding__addpoint">
+                  <input class="adding-form__btn" type="button" value="+" title="Добавить пункт" data-action="click->addingCargo#addTel">
+                  <span class="form-adding__addpointlabel">Добавить контактный телефон</span>
+                </label>
+              </div>
+            </div>
+            <!-- / телефон +  добавить -->
+          </fieldset>
+
+
+          <!--
+          монетизация убрана 19.07.2021
+          <div class="form-checkbox__col">
+             <div class="adding__checkbox">
+               <input type="checkbox" name="" id="check-free" checked>
+               <label for="check-free" class="checkbox__lable">7 дней - бесплатно</label>
+             </div>
+             <div class="adding__checkbox">
+               <input type="checkbox" name="" id="check-seven">
+               <label for="check-seven" class="checkbox__lable">7 дней выделение цветом - 400 тенге</label>
+             </div>
+             <div class="adding__checkbox">
+               <input type="checkbox" name="" id="check-month">
+               <label for="check-month" class="checkbox__lable">30 дней выделение цветом - 1500 тенге</label>
+             </div>
+           </div>
+           <div class="form-bottom__info">
+             <p class="form-logo__text form-bottom__text">Информация по размещению рекламы на сайте:</p>
+             <div class="form-adding__row form-adding__row-botoom">
+               <div class="form-adding__box">
+                 <div class="form-input__row">
+                   <input type="text" name="" id="" placeholder="Размер" class="adding-form__input">
+                 </div>
+               </div>
+               <div class="form-adding__box">
+                 <div class="form-input__row">
+                   <input type="text" name="" id="" placeholder="Стоимость" class="adding-form__input">
+                 </div>
+               </div>
+             </div>
+             <div class="form-adding__row form-adding__row-botoom">
+               <div class="form-adding__box form-adding__box-max">
+                 <div class="form-input__row">
+                   <input type="text" name="" id="" placeholder="Условия размещения" class="adding-form__input">
+                 </div>
+               </div>
+             </div>
+
+           </div>
+           -->
+          <button type="button" class="adding__dtn" data-action="click->addingCargo#addAdvert">Добавить объявление</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+<footer data-controller="templateFooter"></footer>
+
+
+</body>
+
+</html>

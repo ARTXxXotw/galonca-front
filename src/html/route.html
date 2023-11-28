@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Расстояние на карте</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+
+<header data-controller="templateHeader"></header>
+
+  <main class="cargo-main">
+
+    <section class="main__baner main__baner-cargo">
+      <div class="container">
+        <h2 class="main__baner-title">
+          Расстояние на карте
+        </h2>
+      </div>
+    </section>
+
+    <section class="container__cargo cargo-main__bg transport-bg">
+      <div class="container">
+        <div class="container__cargo-box container__cargo-box_column" data-controller="route-map">
+          <div class="cargo-box__col cargo-box__col-form">
+            <form class="filter__form" id="cityFilterForm">
+              <h4 class="form__title">
+                Маршрут и расстояния
+              </h4>
+              <p>Чтобы сформировать маршрут выберите город</p>
+
+              <!-- пункт  мультиселект с поиском и добавлением  -->
+              <fieldset class="form__fieldset form__fieldset-city">
+                <legend class="form__legend">Город</legend>
+                <div class="form__block ">
+                  <div class="form__city addpoint-loadingbox"></div>
+                  <div class="form-btn__dox form-btn__dox_first">
+                    <input type="button" value="+" class="form__btn-add"  data-action="click->route-map#addPointLoading" title="Добавить Город" aria-label="Добавить Город">
+                  </div>
+                </div>
+              </fieldset>
+              <!-- /пункт   мультиселект с поиском и добавлением  -->
+
+
+
+              <button type="button" value="Применить" class="form__btn" data-action="click->route-map#addCityList">Применить</button>
+
+
+              <button type="button" value="Очистить фильтр" class="form__btn--clear" data-action="click->route-map#filterClear">Очистить фильтр</button>
+
+            </form>
+          </div>
+          <div class="cargo-box__col cargo-box__col-data route-section">
+            <p><strong>Для просмотра расстояния - кликните на линию маршрута на карте</strong></p>
+            <div id="map" class="col-sm-12 route-map"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer data-controller="templateFooter"></footer>
+
+</body>
+
+</html>

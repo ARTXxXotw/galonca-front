@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSL.su</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest">
+    <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+<header data-controller="templateHeader"></header>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <div>
+                <h1 class="hero__title">TSL.su — ГРУЗОПЕРЕВОЗКИ, ТРАНСПОРТ, СЕРВИС</h1>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container__menu container__menu--main">
+        <nav class="container addmenu-box">
+            <a class="addmenu-box__btn addmenu-box__add-carriage" href="adding-cargo.html">
+                Добавить
+                груз
+            </a>
+
+           <!-- <a class="addmenu-box__btn addmenu-box__counter" href="counterparty.html">
+                Проверить контрагента
+            </a>-->
+            <a class="addmenu-box__btn addmenu-box__add-service" href="adding-service.html">
+                Добавить сервис
+            </a>
+
+            <a class="addmenu-box__btn addmenu-box__add-sale-avto" href="adding-avto-sale.html">
+                Продажа/аренда
+                автотранспорта
+            </a>
+
+           <!-- <a class="addmenu-box__btn addmenu-box__distance" href="route-cargo.html">
+                Расстояния
+            </a>-->
+
+
+            <a class="addmenu-box__btn addmenu-box__add-shop" href="adding-roadside.html">
+                Добавить заведение
+            </a>
+
+        </nav>
+    </section>
+    <!-- container__menu -->
+
+    <section class="container__cargo advertising__bg-circle" data-controller="cargo-list" data-cargo-list-limit-value="3">
+        <div class="container">
+            <div class="container__header">
+                <h2 class="container__title">ГРУЗЫ: <span class="current-country-name"></span></h2>
+                <a href="cargo.html" class="btn__all">Смотреть всё</a>
+            </div>
+            <div class="banner banner300--mob">
+                <a href="https://api.whatsapp.com/send/?phone=77775854968&text=Здравствуйте,%2C+я+по+поводу+рекламы+на+сайте+TSL.su">
+                    <img src="../img/banner300-600.jpg" alt="Баннер TSL.SU" title="" width="300" height="600">
+                </a>
+            </div>
+
+            <div class="container__cargo-box container__cargo-box--mob">
+                <div class="cargo-box__col cargo-box__col--mob">
+                    <div id="cargoList" >
+                        <!-- список грузы в КЗ -->
+                    </div>
+                </div>
+                <div class="cargo-box__col banner300--desktop">
+                    <div class="banner banner300">
+                        <a href="https://api.whatsapp.com/send/?phone=77775854968&text=Здравствуйте,%2C+я+по+поводу+рекламы+на+сайте+TSL.su">
+                            <img src="../img/banner300-600.jpg" alt="Баннер TSL.SU" title="" width="300" height="600">
+                        </a>
+                    </div>
+                </div>
+                 <!-- список грузы в КЗ  3 записи -->
+            </div>
+        </div>
+    </section>
+    <!-- /container__cargo -->
+
+    <section class="advertising">
+        <div class="container">
+            <div class="banner banner940">
+                <a href="https://api.whatsapp.com/send/?phone=77775854968&text=Здравствуйте,%2C+я+по+поводу+рекламы+на+сайте+TSL.su">
+                    <img src="../img/banner940-200.jpg" alt="Баннер TSL.SU" title="" width="940" height="200">
+                </a>
+            </div>
+        </div>
+        <!-- <div class="advertising__bg-circle"></div> -->
+    </section>
+
+    <section class="container__cargo transport-bg" data-controller="transport-list" data-transport-list-limit-value="3">
+        <div class="container">
+            <div class="container__header">
+                <h2 class="container__title">Транспорт: <span class="current-country-name"></span></h2>
+                <a href="transport.html" class="btn__all">Смотреть всё</a>
+            </div>
+            <div class="container__cargo-box">
+                <div class="cargo-box__col transport__col">
+                    <div id="transportList">
+                        <!-- список транспорт в КЗ = 3 -->
+                    </div>
+                </div>
+                <div class="cargo-box__col"></div>
+
+            </div>
+        </div>
+    </section>
+    <!-- transport -->
+
+    <section class="top-sto">
+        <div class="container">
+            <h2 class="container__title top-sto__title">ТОп-3 СТО</h2>
+            <div class="top-sto__block" data-controller="sto-top"  data-sto-top-limit-value="3">
+                <!-- список ТОП 3 СТО = 3 -->
+            </div>
+            <div class="top-sto__row">
+                <a href="#" class="sto__map">СТО на карте</a>
+                <a href="service.html" class="sto__more">Смотреть все</a>
+            </div>
+        </div>
+    </section>
+    <!-- /top-sto -->
+
+    <section class="services" data-controller="sto-list" data-sto-list-limit-value="5">
+        <div class="container">
+            <div class="container__header">
+                <h2 class="container__title">Сервис: <span class="current-country-name"></span></h2>
+                <a href="service.html" class="btn__all">Смотреть всё</a>
+            </div>
+            <div id="stoList">
+                <!-- список СТО = 5 -->
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer data-controller="templateFooter"></footer>
+
+</body>
+</html>

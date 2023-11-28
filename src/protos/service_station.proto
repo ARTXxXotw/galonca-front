@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+//import "google/protobuf/timestamp.proto";
+import "src/protos/cargo.proto";
+option go_package = "/api";
+package api;
+
+message ServiceStation {
+  uint64 id = 1;
+  string title = 2;
+  string description = 3;
+  repeated uint64 categories = 4;
+  Geo location = 5;
+  string address = 6;
+  repeated string images = 7;
+  repeated string phone = 8;
+  repeated string email = 9;
+  double lat = 10;
+  double lon = 11;
+}
+
+
+message ServiceStationRequest {
+  uint64 id = 1;
+}
+
+message ServiceStationResponse {
+  uint64 id = 1;
+  bool success = 2;
+}
+
+message FindServiceStationRequest {
+  repeated Geo location = 1;
+  repeated string categories = 2;
+  uint32 limit = 9;
+  uint32 offset = 10;
+}
+
+message FindServiceStationResult {
+  uint64 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  message ShortGeo {
+    uint64 id = 1;
+    string name = 2;
+    uint32 type = 3;
+    string address = 4;
+    int32 lat = 5;
+    int32 lon = 6;
+  }
+  ShortGeo location = 4;
+  string title = 6;
+  string description = 7;
+  repeated string categories = 11;
+  repeated string images = 12;
+  repeated string phone = 13;
+  repeated string email = 14;
+  message Owner {
+    uint64 id = 1;
+    string name = 2;
+  }
+  Owner owner = 17;
+  int32 likes = 18;
+  int32 dislikes = 19;
+}
+
+message FindServiceStationResponse {
+  repeated FindServiceStationResult ServiceStations = 1;
+  uint64 found = 2;
+}
+
+service ServiceStationService {
+  rpc Get(ServiceStationRequest) returns(FindServiceStationResult){}
+  rpc Find(FindServiceStationRequest) returns(FindServiceStationResponse) {}
+  rpc Create(ServiceStation) returns (ServiceStationResponse) {}
+  rpc Update(ServiceStation) returns (ServiceStationResponse) {}
+  rpc Delete(ServiceStationRequest) returns (ServiceStationResponse) {}
+}

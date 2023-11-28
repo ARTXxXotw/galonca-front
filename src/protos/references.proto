@@ -1,0 +1,98 @@
+syntax = "proto3";
+
+option go_package = "/api";
+package api;
+
+enum r_type {
+  transportType = 0;
+  loadingType = 1;
+  addition = 2;
+  serviceCategory = 3;
+  autoBrand = 4;
+  busBrand = 5;
+  specialBrand = 6;
+  busTransportType = 7;
+  specialTransportType = 8;
+  cargoType = 9;
+}
+
+enum sortType {
+  r_name = 0;
+  id = 1;
+  created_at = 2;
+}
+
+message Reference {
+  uint64 id = 1;
+  string name = 2;
+  r_type type = 3;
+}
+
+
+message ReferenceRequest {
+  string name = 1;
+  r_type type = 2;
+}
+
+message ReferenceListRequest {
+  r_type type = 1;
+  sortType sort = 2;
+}
+
+message ReferenceListResponse {
+  repeated Reference reference = 1;
+  uint32 found = 2;
+}
+
+message Like {
+  bool positive = 1;
+  uint64 entityId = 2;
+  string entityType = 3;
+}
+
+message LikeRequest {
+  uint64 entityId = 2;
+  string entityType = 3;
+}
+
+message LikeResponse {
+  int64 positive = 1;
+  int64 negative = 2;
+}
+
+message o {
+  int64 Id = 1;
+  string Bin = 2;
+  string Name = 3;
+  string RegisterDate = 4;
+  string OkedCode  = 5;
+  string OkedName  = 6;
+  string SecondOkeds = 7;
+  string KrpCode     = 8;
+  string KrpName     = 9;
+  string KrpBfCode   = 10;
+  string KrpBfName   = 11;
+  string KatoCode    = 12;
+  int64 KatoId      = 13;
+  string KatoAddress = 14;
+  string Fio         = 15;
+  string Ip          = 16;
+}
+
+message StatResponse {
+  bool success = 1;
+  o  Obj = 2;
+  string Description = 3;
+}
+
+message StatRequest {
+  string bin = 1;
+}
+
+service ReferenceService {
+  rpc Stat(StatRequest) returns(StatResponse) {}
+  rpc Get(ReferenceRequest) returns(Reference){}
+  rpc Find(ReferenceListRequest) returns(ReferenceListResponse) {}
+  rpc AddLike(Like) returns (LikeResponse) {}
+  rpc GetLikes(LikeRequest) returns (LikeResponse) {}
+}

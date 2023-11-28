@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мои данные</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body data-controller="templateAuthCheck">
+
+<header data-controller="templateHeader"></header>
+
+  <main  id="profileBox">
+    <section class="main__baner-lk">
+      <strong class="main__baner-title">
+        Личный кабинет
+      </strong>
+    </section>
+    <section class="lk-nav-top__section">
+      <div class="container lk-nav-top__container">
+        <ul class="lk-nav-top">
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="index.html">Главная</a>
+          </li>
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="lk-data.html">Личный кабинет</a>
+          </li>
+          <li class="lk-nav-top__item">
+            <a class="lk-nav-top__link" href="lk-data.html">Мои данные</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="lk__section">
+      <div class="container lk__container">
+        <div class="lk__container-col">
+          <div class="lk-nav__box" data-controller="templateLkNav">
+            <!-- навигация внутри ЛК -->
+          </div>
+        </div>
+
+        <div class="lk__container-col lk-col__data"  data-controller="lkProfile">
+          <div class="lk-container__header">
+            <div class="lk-container__header_left">
+              <h4 class="lk__title">ID:</h4>
+              <div class="lk__title-name" id="profileId"></div>
+            </div>
+            <div class="lk-container__header_right">
+              <div class="lk-date__row">Дата добавления:
+                <span id="profileDate"></span>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ФИО, емайл, тлф  -->
+          <form class="form-adding lk-profile__form needs-validation" id="profileUserForm" novalidate>
+           <fieldset class="row col-sm-12 col-md-12 mt-4">
+              <legend>Личные  данные</legend>
+              <div class="col-sm-18 col-md-18 mb-4">
+                <label class="form-label" for="profileName">* Имя и фамилия</label>
+                <input type="text" name="fio" id="profileName" class="form-control" required="" value="">
+                <div class="invalid-feedback">
+                  Пожалуйста, заполните поле
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 mb-4">
+                <label class="form-label" for="profileEmail">* Email</label>
+                <input type="email" name="email" id="profileEmail" class="form-control" required="" value="">
+                <div class="invalid-feedback">
+                  Пожалуйста, заполните поле
+                </div>
+              </div>
+
+              <div class="col-sm-12 col-md-6 mb-5">
+                <label class="form-label" for="profilePhone">* Контактный телефон</label>
+                <input type="tel" name="phone" id="profilePhone" class="form-control" required="" value="">
+                <div class="invalid-feedback">
+                  Пожалуйста, заполните поле
+                </div>
+              </div>
+
+             <div class="col-sm-12 col-md-12 mb-5">
+               <button type="button" class="adding__dtn lk-profile__btn" data-action="click->lkProfile#UserSaveChange">Сохранить</button>
+             </div>
+
+            </fieldset>
+
+          </form>
+          <!-- END ФИО, емайл, тлф  -->
+
+          <!-- поменять пароль - кнопка и поля -->
+          <form class="form-adding lk-profile__form needs-validation" id="profileChangePassword" novalidate>
+            <legend>Изменить пароль</legend>
+            <fieldset class="row col-sm-12 col-md-12 mt-4" id="changePassBox">
+              <div class="cold-sm-18">
+                <div class="col-sm-12 col-md-6 mb-4">
+                  <label class="form-label" for="profilePassw">* Текущий пароль</label>
+                  <input type="password" name="lk_password" id="profilePassw" class="form-control" placeholder="Введите пароль" required="">
+                  <div class="invalid-feedback"> Пожалуйста, заполните поле</div>
+                </div>
+              </div>
+
+
+             <div class="col-sm-12 col-md-6 mb-5 form-adding-pass">
+                <label class="form-label" for="profilePassNew">* Новый пароль (только латиница)</label>
+                <input type="password" name="lk_password_new" id="profilePassNew" class="form-control showpass" autocomplete="off" value="" placeholder="Введите пароль" required="">
+                <div class="invalid-feedback"> Пожалуйста, заполните поле</div>
+                <span class="password-control" data-action="click->lkProfile#showPass"></span>
+               <ul class="info-password-check" id="info-password-check">
+                 <li id="letter">Минимум <strong>одна буква</strong></li>
+                 <li id="capital">Минимум <strong>одна заглавная буква</strong></li>
+                 <li id="number">Минимум <strong>одна цифра</strong></li>
+                 <li id="length">Не менее <strong>8 символов</strong></li>
+               </ul>
+              </div>
+
+
+
+              <div class="col-sm-12 col-md-6 mb-4 form-adding-pass">
+                <label class="form-label" for="profilePassNewRepeat">* Повторите новый пароль</label>
+                <input type="password" name="lk_password_new_repeat" id="profilePassNewRepeat" class="form-control showpass" autocomplete="off" value=""  placeholder="Введите пароль" required="">
+                <div class="invalid-feedback"> Пожалуйста, заполните поле</div>
+                <span class="password-control" data-action="click->lkProfile#showPassRepeat"></span>
+                <div class="pass-match"></div>
+              </div>
+
+              <div class="col-sm-12 col-md-12">
+                <button type="button" class="adding__dtn lk-profile__btn" data-action="click->lkProfile#passwordNew">Сохранить</button>
+              </div>
+
+            </fieldset>
+
+          </form>
+          <!-- /поменять пароль - кнопка и поля -->
+
+          <div class="form-adding lk-profile__form">
+            <p>После удаления аккаунта: </p>
+            <ul class="marked">
+              <li>Восстановить аккаунт невозможно</li>
+              <li>Все привязанные к аккаунту объявления удаляются</li>
+              <li>Все привязанные к аккаунту компании и сотрудники этих компаний удаляются</li>
+              <li>Объявления, созданные сотрудниками удаленной компании удаляются</li>
+            </ul>
+            <div class="lk-btn__row">
+              <a href="#popup-delete" class="lk__btn lk__btn-del" data-bs-toggle="modal" data-bs-target="#popup-delete">Удалить аккаунт</a>
+              <!-- Modal -->
+              <div class="modal fade" id="popup-delete" tabindex="-1" aria-labelledby="popup-delete" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Вы уверены, что ходите удалить аккаунт?</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>После удаления аккаунта: </p>
+                      <ul class="marked">
+                        <li>Восстановить аккаунт невозможно</li>
+                        <li>Все привязанные к аккаунту объявления удаляются</li>
+                        <li>Все привязанные к аккаунту компании и сотрудники этих компаний удаляются</li>
+                        <li>Объявления, созданные сотрудниками удаленной компании удаляются</li>
+                      </ul>
+
+                      <div class="container lk__container lk__container-center">
+
+                        <button type="button" class="lk__btn lk__btn--no" data-bs-dismiss="modal">НЕ ХОЧУ УДАЛЯТЬ АККАУНТ</button>
+
+                        <div class="col-sm-6">
+                          <input type="button" value="Удалить" class="lk__btn lk__btn-del" data-bs-dismiss="modal"   data-action="click->lkProfile#userDelete">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="modal-footer">
+
+                       <button type="button" class="btn btn-primary">Save changes</button>
+                     </div>-->
+                  </div>
+                </div>
+              </div>
+
+
+              <!--<div class="ads-popup" id="popup-ads-box">
+                <div class="ads-popup__container">
+                  <div class="ads-popup__text">
+                    <strong>Вы уверены, что ходите удалить Ваш профиль?</strong>
+                    <p>После удаления профиля: </p>
+                    <ul>
+                      <li>Восстановить профиль невозможно</li>
+                      <li>Все привязанные к профилю объявления удаляются</li>
+                      <li>Все привязанные к профилю компании и сотрудники этих компаний удаляются</li>
+                      <li>Объявления, созданные сотрудниками удаленной компании удаляются</li>
+                    </ul>
+
+                    <div class="container lk__container lk__container-center">
+                      <button class="lk__btn lk__btn&#45;&#45;no" data-action="click->lkProfile#userNoDelete">НЕ ХОЧУ УДАЛЯТЬ ПРОФИЛЬ</button>
+                      <input type="button" value="Удалить" class="lk__btn lk__btn-del"  data-action="click->lkProfile#userDelete">
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>-->
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer data-controller="templateFooter"></footer>
+
+</body>
+
+</html>

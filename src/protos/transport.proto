@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "src/protos/cargo.proto";
+
+option go_package = "/api";
+package api;
+
+enum SalesType {
+  sale = 0;
+  rent = 1 ;
+  leasing = 2 ;
+}
+
+message Transport {
+  uint64 id = 1;
+  google.protobuf.Timestamp created_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
+  SalesType type = 4;
+  uint64 brand = 5;
+  uint64 transportType = 6;
+  string model = 7;
+  string releaseYear = 8;
+  uint32 engine = 9;
+  string transmission = 10;
+  uint64 mileage = 11;
+  string fuelType = 12;
+  string availability = 13;
+  string condition = 14;
+  uint64 cost = 15;
+  string information = 16;
+  Geo    placement = 17;
+  repeated string images = 18;
+  string currency = 19;
+  repeated string phones = 20;
+  repeated string emails = 21;
+  uint32 numberPassengers = 22;
+  uint32 powder = 23;
+}
+
+
+message TransportRequest {
+  uint64 id = 1;
+}
+
+message TransportResponse {
+  uint64 id = 1;
+  bool success = 2;
+}
+
+message FindTransportRequest {
+  SalesType type = 1;
+  Geo placement = 2;
+  string condition = 3;
+  repeated uint64 transportType = 4;
+  repeated string fuelType = 5;
+  repeated uint64 brand = 6;
+  uint64 costFrom = 7;
+  uint64 costTill = 8;
+  uint32 limit = 9;
+  uint32 offset = 10;
+}
+
+message FindTransportResult {
+  uint64 id = 1;
+  string created_at = 2;
+  string updated_at = 3;
+  string brand = 4;
+  string transportType = 5;
+  string model = 6;
+  string releaseYear = 7;
+  string engine = 8;
+  string transmission = 9;
+  uint64 mileage = 10;
+  string fuelType = 11;
+  string availability = 12;
+  string salesType = 13;
+  string condition = 14;
+  uint64 cost = 15;
+  string information = 16;
+  message ShortGeo {
+    uint64 id = 1;
+    string name = 2;
+    uint32 type = 3;
+  }
+  ShortGeo location = 17;
+  message Owner {
+    uint64 id = 1;
+    string name = 2;
+  }
+  repeated string images = 18;
+  string currency = 19;
+  repeated string phones = 20;
+  repeated string emails = 21;
+  uint32 numberPassengers = 22;
+  uint32 powder = 23;
+  Owner owner = 171;
+
+}
+
+message FindTransportResponse {
+  repeated FindTransportResult transports = 1;
+  uint64 found = 2;
+}
+
+service TransportService {
+  rpc Get(TransportRequest) returns(FindTransportResult){}
+  rpc Find(FindTransportRequest) returns(FindTransportResponse) {}
+  rpc Create(Transport) returns (TransportResponse) {}
+  rpc Update(Transport) returns (TransportResponse) {}
+  rpc Delete(TransportRequest) returns (TransportResponse) {}
+}
